@@ -1,3 +1,7 @@
-#boards {
+.board {
+    margin: auto;
+    width: 80%;
     background-color: green;
+    border: 1px solid darkgreen;
+    border-radius: 25px;
 }
