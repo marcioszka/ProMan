@@ -6,6 +6,7 @@ import queries
 
 mimetypes.add_type('application/javascript', '.js')
 app = Flask(__name__)
+app.secret_key = 'b$2b$12$UqwJUUmOTIXVJ1NFd.UMg.'
 load_dotenv()
 
 @app.route("/")
