@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from dotenv import load_dotenv
 from util import json_response, hash_password, validate_user
 import mimetypes
@@ -35,9 +35,12 @@ def get_cards_for_board(board_id: int):
     """
     return queries.get_cards_for_board(board_id)
 
-@app.route('/registration-form', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return redirect('/')
+        #return render_template("registration_form.html")
+    elif request.method == 'POST':
         return render_template("index.html")
         #username = request.form.get('username')
         #password_to_hash = request.form.get('password')
@@ -47,9 +50,29 @@ def register():
         #    return redirect('/')
         #else:
         #    return "Couldn't perform this task"
-    elif request.method == 'GET':
-        return render_template('registration-form.html')
 
+@app.route('login', methods=['GET', 'POST'])
+def login():
+    is_logged = False
+    if request.method == 'POST':
+        user_login = request.form.get("login")
+        user_password = request.form.get("user_password")
+        hashed_password = queries.get_user_password(user_login)
+        is_logged = validate_user(user_password, hashed_password)
+        if is_logged:
+            session['user'] = user_login
+            return redirect('/')
+        else:
+            return render_template('error.html')
+    elif request.method == 'GET':
+        session.clear()
+        return render_template('login_form.html')
+
+
+@app.route("/logout")
+def log_out():
+    session.clear()
+    return redirect('/')
 
 def main():
     app.run(debug=True)

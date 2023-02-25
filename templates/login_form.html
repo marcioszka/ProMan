@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProMan</title>
+</head>
+<body>
+    <a href="index.html">Return to main page</a><br>
+    <p>Sign in</p>
+    <form class="form" action="{{ url_for('login') }}" method="post">
+        <label for="login" class="form__label">Username:</label>
+        <input type="text" id="login" name="login" required>
+        <br><br>
+        <label for="user_password" class="form__label">Password:</label>
+        <input type="password" id="user_password" name="user_password" required>
+        <br><br>
+        <input type="submit" class="form__submit" value="Sign in" onclick="">
+    </form>
+</body>
+</html>
