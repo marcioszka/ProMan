@@ -15,6 +15,10 @@
         <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     </head>
     <body>
-        <div id="root"></div>
+        <a href="registration-form.html" id="register">Register</a>
+        <a href="{{ url_for('log_in') }}">Log in</a>
+        <div id="root" class="board-container">
+            <p>BOARDS</p>
+        </div>
     </body>
 </html>
