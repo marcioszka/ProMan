@@ -49,4 +49,8 @@ def get_cards_for_board(board_id):
     return matching_cards
 
 def add_user(username, password):
-    return data_manager.execute_select('INSERT INTO users (name, password) VALUES (%(username)s, %(password)s) RETURNING id')
+    new_user = data_manager.execute_select('INSERT INTO users (name, password) VALUES (%(username)s, %(password)s) RETURNING id', {'name': username, 'password': password})
+    return new_user['id']
+
+def get_user_password(username):
+    return data_manager.execute_select('SELECT password FROM users WHERE name=%(username)s', {'name': username}, fetchall=False)
