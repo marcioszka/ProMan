@@ -1,6 +1,6 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, redirect, request, url_for
 from dotenv import load_dotenv
-from util import json_response
+from util import json_response, hash_password, validate_user
 import mimetypes
 import queries
 
@@ -34,6 +34,21 @@ def get_cards_for_board(board_id: int):
     :param board_id: id of the parent board
     """
     return queries.get_cards_for_board(board_id)
+
+@app.route('/registration-form', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        return render_template("index.html")
+        #username = request.form.get('username')
+        #password_to_hash = request.form.get('password')
+        #password = hash_password(password_to_hash)
+        #new_user = queries.add_user(username, password)
+        #if new_user > -1:
+        #    return redirect('/')
+        #else:
+        #    return "Couldn't perform this task"
+    elif request.method == 'GET':
+        return render_template('registration-form.html')
 
 
 def main():

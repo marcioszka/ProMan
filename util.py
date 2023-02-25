@@ -23,12 +23,3 @@ def hash_password(password):
 def validate_user(password_from_user, hashed_password):
     hashed_bytes = hashed_password.encode('utf-8')
     return bcrypt.checkpw(password_from_user.encode('utf-8'), hashed_bytes)
-
-def register():
-    pass
-
-def login():
-    pass
-
-def logout():
-    pass
