@@ -39,10 +39,10 @@ def get_cards_for_board(board_id: int):
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        name = request.form.get('username')
+        username = request.form.get('username')
         password_to_hash = request.form.get('password')
         password = hash_password(password_to_hash)
-        new_user = queries.add_user(name, password)
+        new_user = queries.add_user(username, password)
         if new_user:
             return redirect('/')
         else:
