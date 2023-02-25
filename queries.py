@@ -48,9 +48,10 @@ def get_cards_for_board(board_id):
 
     return matching_cards
 
-def add_user(username, password):
-    new_user = data_manager.execute_select('INSERT INTO users (name, password) VALUES (%(username)s, %(password)s) RETURNING id', {'name': username, 'password': password})
-    return new_user['id']
+def add_user(name, password):
+    new_user = data_manager.execute_select('INSERT INTO users (name, password) VALUES (%(name)s, %(password)s) RETURNING id', {'name': name, 'password': password})
+    return new_user
 
-def get_user_password(username):
-    return data_manager.execute_select('SELECT password FROM users WHERE name=%(username)s', {'name': username}, fetchall=False)
+def get_user_password(name):
+    user_data = data_manager.execute_select('SELECT password FROM users WHERE name=%(name)s', {'name': name}, fetchall=False)
+    return user_data['password']
