@@ -16,16 +16,16 @@
     <p>ProMan</p>
     <p>Register to experience our best functionalities.</p>
     <form class="form" action="{{ url_for('register') }}" method="POST">
-        <label class="form__label" for="username">Enter your username:</label>
-        <input type="text" id="username" name="username" required>
+        <!--<label class="form__label" for="username">Enter your username:</label>-->
+        <input type="text" id="username" name="username" placeholder="Username" required>
         <br><br>
-        <label class="form__label" for="password">Enter your password:</label>
-        <input type="password" id="password" name="password" placeholder="min. 8 characters" minlength="8" required>
+        <!--<label class="form__label" for="password">Enter your password:</label>-->
+        <input type="password" id="password" name="password" placeholder="Password (min. 8 characters)" minlength="8" required>
         <br><br>
-        <!--<label class="form__label" for="password2">Re-enter your password:</label>
-        <input type="password" id="password2" name="password2" minlength="8" required>
-        <br>-->
-        <input class="form__submit" value="Register" type="submit">
+        <!--<label class="form__label" for="password2">Re-enter your password:</label>-->
+        <input type="password" id="password2" name="password2" minlength="8" placeholder="Repeat password" required>
+        <br><br>
+        <input class="form__submit" value="Sign up" type="submit">
     </form>
 </body>
 </html>
