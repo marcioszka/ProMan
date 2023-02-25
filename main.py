@@ -14,7 +14,8 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    return render_template('index.html')
+    if request.method == 'GET':
+        return render_template('index.html')
 
 
 @app.route("/api/boards")
@@ -35,23 +36,21 @@ def get_cards_for_board(board_id: int):
     """
     return queries.get_cards_for_board(board_id)
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-    if request.method == 'GET':
-        return redirect('/')
-        #return render_template("registration_form.html")
-    elif request.method == 'POST':
-        return render_template("index.html")
-        #username = request.form.get('username')
-        #password_to_hash = request.form.get('password')
-        #password = hash_password(password_to_hash)
-        #new_user = queries.add_user(username, password)
-        #if new_user > -1:
-        #    return redirect('/')
-        #else:
-        #    return "Couldn't perform this task"
+    if request.method == 'POST':
+        name = request.form.get('username')
+        password_to_hash = request.form.get('password')
+        password = hash_password(password_to_hash)
+        new_user = queries.add_user(name, password)
+        if new_user:
+            return redirect('/')
+        else:
+            return "Couldn't perform this task"
+    else:
+        return render_template("registration_form.html")
 
-@app.route('login', methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     is_logged = False
     if request.method == 'POST':
@@ -61,7 +60,8 @@ def login():
         is_logged = validate_user(user_password, hashed_password)
         if is_logged:
             session['user'] = user_login
-            return redirect('/')
+            session['logged'] = True
+            return render_template('index.html', session=session)
         else:
             return render_template('error.html')
     elif request.method == 'GET':
@@ -70,7 +70,7 @@ def login():
 
 
 @app.route("/logout")
-def log_out():
+def logout():
     session.clear()
     return redirect('/')
 
