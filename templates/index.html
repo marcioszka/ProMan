@@ -15,11 +15,15 @@
         <!--<script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>-->
     </head>
     <body>
-        <a href="registration_form.html" id="register">Sign up</a>
-        <!--<a href="url_for('register')">Sign up</a>-->
-        <a href="login_form.html">Sign in</a>
+        {% if session['logged'] %}
+            <a href="{{ url_for('logout') }}">Sign out</a>
+            <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
+        {% else %}
+            <a href="{{ url_for('register') }}">Sign up</a>
+            <a href="{{ url_for('login') }}">Sign in</a>
+        {% endif %}
         <div id="root" class="board-container">
-            <p>BOARDS</p>
+            <p></p>
         </div>
     </body>
 </html>

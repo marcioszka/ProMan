@@ -5,7 +5,7 @@
     <title>ProMan</title>
 </head>
 <body>
-    <a href="index.html">Return to main page</a><br>
+    <a href="{{ url_for('index') }}">Return to main page</a><br>
     <p>Sign in</p>
     <form class="form" action="{{ url_for('login') }}" method="post">
         <label for="login" class="form__label">Username:</label>
