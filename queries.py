@@ -47,3 +47,6 @@ def get_cards_for_board(board_id):
         , {"board_id": board_id})
 
     return matching_cards
+
+def add_user(username, password):
+    return data_manager.execute_select('INSERT INTO users (name, password) VALUES (%(username)s, %(password)s) RETURNING id')
