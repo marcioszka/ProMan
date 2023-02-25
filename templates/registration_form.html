@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>ProMan</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="design-materials/design.css">
 </head>
 <body>
-$END$
+    <a href="index.html">Return to main page</a><br>
+    <img src="static/favicon/favicon-96x96.png" alt="ProMan" loading="eager">
+    <p>ProMan</p>
+    <p>Register to experience our best functionalities.</p>
+    <form class="form" action="{{ url_for('register') }}" method="POST">
+        <label class="form__label" for="username">Enter your username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <label class="form__label" for="password">Enter your password:</label>
+        <input type="password" id="password" name="password" placeholder="min. 8 characters" minlength="8" required>
+        <br><br>
+        <!--<label class="form__label" for="password2">Re-enter your password:</label>
+        <input type="password" id="password2" name="password2" minlength="8" required>
+        <br>-->
+        <input class="form__submit" value="Register" type="submit">
+    </form>
 </body>
 </html>

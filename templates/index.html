@@ -11,12 +11,13 @@
         <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-        <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+        <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">-->
+        <!--<script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>-->
     </head>
     <body>
-        <a href="registration-form.html" id="register">Register</a>
-        <a href="{{ url_for('log_in') }}">Log in</a>
+        <a href="registration_form.html" id="register">Sign up</a>
+        <!--<a href="url_for('register')">Sign up</a>-->
+        <a href="login_form.html">Sign in</a>
         <div id="root" class="board-container">
             <p>BOARDS</p>
         </div>
