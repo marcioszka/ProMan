@@ -14,8 +14,7 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    if request.method == 'GET':
-        return render_template('index.html')
+    return render_template('index.html')
 
 
 @app.route("/api/boards")
@@ -46,7 +45,7 @@ def register():
         if new_user:
             return redirect('/')
         else:
-            return "Couldn't perform this task"
+            return render_template("error.html")
     else:
         return render_template("registration_form.html")
 
