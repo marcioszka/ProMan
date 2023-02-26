@@ -11,19 +11,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
 
-        <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">-->
-        <!--<script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+        <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     </head>
     <body>
         {% if session['logged'] %}
-            <a href="{{ url_for('logout') }}">Sign out</a>
+            <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
+            <input type="button" onclick="" value="Create new board">
             <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
         {% else %}
-            <a href="{{ url_for('register') }}">Sign up</a>
-            <a href="{{ url_for('login') }}">Sign in</a>
+            <a href="{{ url_for('register') }}" id="registration">Sign up</a>
+            <a href="{{ url_for('login') }}" id="login">Sign in</a>
         {% endif %}
-        <div id="root" class="board-container">
-            <p></p>
+        <div id="root">
         </div>
     </body>
 </html>

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="design-materials/design.css">
+    <link rel="stylesheet" href="design.css">
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </head>
 <body>
     <a href="{{ url_for('index') }}">Return to main page</a><br>
@@ -23,7 +24,7 @@
         <input type="password" id="password" name="password" placeholder="Password (min. 8 characters)" minlength="8" required>
         <br><br>
         <!--<label class="form__label" for="password2">Re-enter your password:</label>-->
-        <input type="password" id="password2" name="password2" minlength="8" placeholder="Repeat password" required>
+        <input type="password" id="password2" name="password2" minlength="8" placeholder="Repeat password" oninput="checkValues" required>
         <br><br>
         <input class="form__submit" value="Sign up" type="submit">
     </form>
