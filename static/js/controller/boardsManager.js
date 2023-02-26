@@ -17,6 +17,12 @@ export let boardsManager = {
             );
         }
     },
+    // changeName: async function (element) {
+    //     let newElement = document.createElement('input');
+    //     newElement.setAttribute('class', 'change-board-name');
+    //     let parent = element.parentElement;
+    //     parent.replaceChild(newElement, element);
+    // }
 };
 
 function showHideButtonHandler(clickEvent) {

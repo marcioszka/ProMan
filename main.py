@@ -34,7 +34,11 @@ def create_board():
     data = request.get_json(force=True)
     content = data["body"]
     title = content["title"]
-    return queries.add_board(title)
+    if request.method == 'POST':
+        return queries.add_board(title)
+    else:
+        return content["title"]
+
 
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response

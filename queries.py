@@ -18,6 +18,14 @@ def get_card_status(status_id):
     return status
 
 
+def get_board(title):
+    return data_manager.execute_select(
+        """
+        SELECT title FROM boards WHERE title=%(title)s
+        ;
+        """
+    )
+
 def get_boards():
     """
     Gather all boards

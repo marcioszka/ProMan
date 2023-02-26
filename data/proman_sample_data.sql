@@ -77,3 +77,10 @@ ALTER TABLE ONLY cards
 
 ALTER TABLE ONLY cards
     ADD CONSTRAINT fk_cards_status_id FOREIGN KEY (status_id) REFERENCES statuses(id);
+
+ALTER TABLE IF EXISTS ONLY boards
+    ADD COLUMN IF NOT EXISTS user_id INTEGER;
+
+ALTER TABLE ONLY boards
+    ADD CONSTRAINT fk_boards_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
