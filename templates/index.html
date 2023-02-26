@@ -17,7 +17,7 @@
     <body>
         {% if session['logged'] %}
             <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
-            <input type="button" onclick="" value="Create new board">
+            <input id="add-board" type="button" onclick="getBoardName" value="Create new board">
             <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
         {% else %}
             <a href="{{ url_for('register') }}" id="registration">Sign up</a>
