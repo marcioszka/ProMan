@@ -15,4 +15,10 @@ export let domManager = {
             console.error("could not find such html element: " + parentIdentifier);
         }
     },
+    /*getElement(attribute){
+        switch (attribute){
+            case 'id':
+
+        }
+    }*/
 };
