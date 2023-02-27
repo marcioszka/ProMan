@@ -15,6 +15,9 @@ export let boardsManager = {
                 "click",
                 showHideButtonHandler
             );
+            domManager.addEventListener(`.board-header[data-board-id="${board.id}"]`,
+                "click",
+                toggleHideShowBoardColumns)
         }
     },
     // changeName: async function (element) {
@@ -28,4 +31,16 @@ export let boardsManager = {
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
     cardsManager.loadCards(boardId);
+}
+
+function toggleHideShowBoardColumns(clickEvent){
+    const hideShowToggler = clickEvent.target;
+    const hideShow = hideShowToggler.nextElementSibling;
+    const isHidden = hideShow.style.display === 'none';
+    if(isHidden) {
+        hideShow.style.display = 'block'
+    }
+    else{
+        hideShow.style.display = 'none'
+    };
 }
