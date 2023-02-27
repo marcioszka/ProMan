@@ -31,13 +31,18 @@ def create_board():
     """
     Handle new board
     """
+    username = session.get('user', default='Unknown')
     data = request.get_json(force=True)
     content = data["body"]
     title = content["title"]
     if request.method == 'POST':
-        return queries.add_board(title)
+        if 'user' in session:
+            user_id = queries.get_user_id(username)
+            return queries.add_private_board(user_id, title)
+        else:
+            return queries.add_board(title)
     else:
-        return content["title"]
+        return content
 
 # @app.route("/api/<int: board_id>", methods=['GET'])
 # @json_response

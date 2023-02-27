@@ -48,6 +48,13 @@ def add_board(title):
         """, {'title': title}
     )
 
+def add_private_board(user_id, title):
+    return data_manager.execute_select(
+        """
+        INSERT INTO boards (title, user_id) VALUES (%(title)s, %(user_id)s) RETURNING id
+        """, {'title': title, 'user_id': user_id}
+    )
+
 def get_cards_for_board(board_id):
     # remove this code once you implement the database
     return [{"title": "title1", "id": 1}, {"title": "board2", "id": 2}]
