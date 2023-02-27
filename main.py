@@ -74,6 +74,7 @@ def login():
         if is_logged:
             session['user'] = user_login
             session['logged'] = True
+            session['id'] = queries.get_user_id(user_login)
             return render_template('index.html', session=session)
         else:
             return render_template('error.html')

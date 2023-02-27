@@ -17,8 +17,9 @@
     <body>
         {% if session['logged'] %}
             <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
-
+            <input id="add-board-private" type="button" onclick="getBoardName" value="Create new private board">
             <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
+            <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden />
         {% else %}
             <a href="{{ url_for('register') }}" id="registration">Sign up</a>
             <a href="{{ url_for('login') }}" id="login">Sign in</a>

@@ -69,3 +69,7 @@ def add_user(username, password):
 def get_user_password(username):
     user_data = data_manager.execute_select('SELECT password FROM users WHERE username=%(username)s', {'username': username}, fetchall=False)
     return user_data['password']
+
+def get_user_id(username):
+    user_data = data_manager.execute_select('SELECT id FROM users WHERE username=%(username)s', {'username': username}, fetchall=False)
+    return user_data['id']
