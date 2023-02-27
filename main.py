@@ -39,6 +39,10 @@ def create_board():
     else:
         return content["title"]
 
+# @app.route("/api/<int: board_id>", methods=['GET'])
+# @json_response
+# def get_board(board_id: int):
+#     return queries.get_board(board_id)
 
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response

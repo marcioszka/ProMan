@@ -73,3 +73,10 @@ def get_user_password(username):
 def get_user_id(username):
     user_data = data_manager.execute_select('SELECT id FROM users WHERE username=%(username)s', {'username': username}, fetchall=False)
     return user_data['id']
+
+def get_board(id):
+    return data_manager.execute_select(
+        """
+        SELECT * FROM boards WHERE id=%(id)s;
+        """, {'id': id}
+    )
