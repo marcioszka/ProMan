@@ -15,6 +15,7 @@
 
     </head>
     <body>
+    <input type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">
         {% if session['logged'] %}
             <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
             <div class="user-panel"><input id="add-board-private" type="button" value="Create new private board">

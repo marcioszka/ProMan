@@ -18,8 +18,6 @@ function init() {
 init();
 
 
-
-
 //let newBoardName = document.getElementsByClassName("board-title");
 //console.log(newBoardName);
 //let renameBoard = boardsManager.changeName;
