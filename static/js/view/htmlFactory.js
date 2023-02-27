@@ -1,11 +1,13 @@
 export const htmlTemplates = {
     board: 1,
-    card: 2
+    card: 2,
+    inputBox: 3
 }
 
 export const builderFunctions = {
     [htmlTemplates.board]: boardBuilder,
-    [htmlTemplates.card]: cardBuilder
+    [htmlTemplates.card]: cardBuilder,
+    [htmlTemplates.inputBox]: inputBoxBuilder
 };
 
 export function htmlFactory(template) {
@@ -38,4 +40,6 @@ function cardBuilder(card) {
     return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
 }
 
-
+function inputBoxBuilder(){
+    return `<input type="text" class="add-board-title" id="add-board-title" placeholder="Board name" required><input type="button" class="add-new-board" value="Save" type="submit">`
+}
