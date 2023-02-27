@@ -28,7 +28,8 @@ function boardBuilder(board) {
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
                     <button class="toggle-board-button" data-board-id="${board.id}">Show Cards</button>
                 </section>
-                <div class="board-columns" id="board-columns">
+                <div class="board-columns" id="board-columns" style="display: none">
+                    <input id="add-column-button" class="add-column" type="button" type="submit" value="Add column">
                     <div class="board-column"><div class="board-column-title">New</div><div class="board-column-cards"></div></div>
                     <div class="board-column"><div class="board-column-title">In progress</div><div class="board-column-cards"></div></div>
                     <div class="board-column"><div class="board-column-title">Testing</div><div class="board-column-cards"></div></div>
