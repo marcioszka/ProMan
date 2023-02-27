@@ -41,5 +41,6 @@ function cardBuilder(card) {
 }
 
 function inputBoxBuilder(){
-    return `<input type="text" class="add-board-title" id="add-board-title" placeholder="Board name" required><input type="button" class="add-new-board" value="Save" type="submit">`
+    return `<div id="board-name-input"><input type="text" class="add-board-title" id="add-board-title-box" placeholder="Board name" required>
+            <input type="button" class="add-new-board" value="Save" type="submit"></div>`
 }

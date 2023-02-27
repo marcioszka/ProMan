@@ -12,20 +12,21 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-        <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+
     </head>
     <body>
         {% if session['logged'] %}
             <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
-            <input id="add-board-private" type="button" onclick="getBoardName" value="Create new private board">
+            <div class="user-panel"><input id="add-board-private" type="button" value="Create new private board">
+            <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden /></div>
             <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
-            <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden />
         {% else %}
             <a href="{{ url_for('register') }}" id="registration">Sign up</a>
             <a href="{{ url_for('login') }}" id="login">Sign in</a>
-            <input id="add-board" type="button" onclick="getBoardName" value="Create new board">
+            <div class="user-panel"><input id="add-board" type="button" onclick="getBoardName" value="Create new board"></div>
         {% endif %}
         <div id="root">
         </div>
     </body>
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </html>
