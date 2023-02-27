@@ -20,7 +20,7 @@ export let boardsManager = {
                 toggleHideShowBoardColumns)
         }
     },
-    addPrivateBoard: function () {
+    createBoard: function () {
         const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
         domManager.addChild(".user-panel", inputBoxAndButton);
         domManager.addEventListener('.add-new-board',
@@ -52,8 +52,8 @@ function toggleHideShowBoardColumns(clickEvent){
     };
 }
 function addBoard(clickEvent) {
-    const newPrivateBoardName = clickEvent.target.previousElementSibling.value;
-    console.log(newPrivateBoardName);//document.getElementById('add-board-title-box').value;
-    dataHandler.createNewPrivateBoard(newPrivateBoardName);
+    const newBoardName = clickEvent.target.previousElementSibling.value;
+    console.log(newBoardName);//document.getElementById('add-board-title-box').value;
+    dataHandler.createNewBoard(newBoardName);
     document.getElementById('board-name-input').remove();
 }

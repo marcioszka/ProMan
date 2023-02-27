@@ -31,14 +31,24 @@ def get_boards():
     Gather all boards
     :return:
     """
-    #remove this code once you implement the database
-    #return [{"title": "board1", "id": 1}, {"title": "board2", "id": 2}]
-
     return data_manager.execute_select(
         """
         SELECT * FROM boards
         ;
         """
+    )
+
+def get_private_boards(user_id):
+    return data_manager.execute_select(
+        """
+        SELECT * FROM boards WHERE user_id <> 'null' OR user_id=%(user_id)s
+        ;
+        """, {'user_id': user_id}
+    )
+
+def get_public_boards():
+    return data_manager.execute_select(
+        """SELECT * FROM boards WHERE user_id <> 'null';"""
     )
 
 def add_board(title):

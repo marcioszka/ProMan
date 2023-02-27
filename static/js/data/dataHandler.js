@@ -4,9 +4,7 @@ export let dataHandler = {
     },
     getBoard: async function (boardId) {
         // the board is retrieved and then the callback function is called with the board
-    },
-    getPrivateBoard: async function (boardId){
-        return apiGet(`/api/boards/${boardId}`)
+        //return apiGet(`/api/boards/${boardId}`)
     },
     getStatuses: async function () {
         // the statuses are retrieved and then the callback function is called with the statuses
@@ -20,11 +18,11 @@ export let dataHandler = {
     getCard: async function (cardId) {
         // the card is retrieved and then the callback function is called with the card
     },
-    createNewBoard: async function (boardTitle) {
+    //createNewBoard: async function (boardTitle) {
         // creates new board, saves it and calls the callback function with its data
-        return await apiPost('/api/current_board', getBoardName)
-    },
-    createNewPrivateBoard: async function (boardTitle) {
+       // return await apiPost('/api/current_board', getBoardName)
+    //},
+    createNewBoard: async function (boardTitle) {
         return await apiPost('/api/current_board', { body: {"title": boardTitle}})
     },
     createNewCard: async function (cardTitle, boardId, statusId) {
@@ -58,10 +56,4 @@ async function apiPut(url) {
 }
 
 async function apiPatch(url) {
-}
-
-export function getBoardName(){
-    let boardName = prompt("Add board name");
-    while(boardName === null){boardName = prompt("Add board name")}
-    return apiPost('/api/current_board', { body: {"title": boardName}});
 }
