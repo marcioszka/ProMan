@@ -12,6 +12,16 @@ body{
     font-family: sans-serif;
 }
 
+#refresh-button{
+    position: fixed;
+    right: 1%;
+}
+
+#user-id{
+    position: relative;
+    right: 1%;
+}
+
 h1, .board-title, .board-column-title{
     font-weight: 100;
 }
