@@ -17,6 +17,10 @@ body{
     right: 1%;
 }
 
+#delete-board-button{
+    background: transparent;
+}
+
 #user-id{
     position: relative;
     right: 1%;
@@ -59,7 +63,7 @@ section.board{
 }
 
 .board-header{
-    height: 50px;
+    /*height: 50px;*/
     background: #fff;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
@@ -67,8 +71,9 @@ section.board{
 .board-title{
     margin: 13px;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
 }
+
 .board-title, .board-add, .toggle-board-button {
     display: inline-block;
 }

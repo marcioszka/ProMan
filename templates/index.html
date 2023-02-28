@@ -22,6 +22,7 @@
             {% else %}
                 <a href="{{ url_for('register') }}" id="registration">Sign up</a>
                 <a href="{{ url_for('login') }}" id="login">Sign in</a>
+                <input id="user-id" name='user-id' value='false' hidden />
             {% endif %}
             <input type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">
         </div>

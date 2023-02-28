@@ -5,28 +5,7 @@ import {cardsManager} from "./cardsManager.js";
 
 export let boardsManager = {
     loadBoards: async function () {
-        const user_id = document.getElementById('user-id');
-        const allBoards = await dataHandler.getBoards();
-        const boards = structuredClone(allBoards);
-        if(user_id != null){ //zalogowany
-             for (let eachBoard of boards){
-                 console.log(Object.values(eachBoard)[2]);
-                 if (Object.values(eachBoard)[2] !== null && Object.values(eachBoard)[2] !== user_id)
-                        {
-                            //console.log(Object.values(eachBoard)[2]);
-                            //delete boards[eachBoard]
-                            };
-             }
-         }
-        else{ //niezalogowany
-            for (let eachBoard of boards){
-                console.log(Object.values(eachBoard)[2]);
-                if (Object.values(eachBoard)[2] !== null) {
-                    //console.log(Object.values(eachBoard)[2]);
-                    //delete boards[eachBoard]
-                    };
-                }
-            };
+        const boards = await dataHandler.getBoards();
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
@@ -38,7 +17,7 @@ export let boardsManager = {
             );
             domManager.addEventListener(`.board-header[data-board-id="${board.id}"]`,
                 "click",
-                toggleHideShowBoardColumns)
+                toggleHideShowBoardColumns);
             //domManager.addEventListener()
         }
     },
@@ -48,7 +27,10 @@ export let boardsManager = {
         domManager.addEventListener('.save-data',
             "click",
             addBoard);
-    }
+    },
+    removeBoard: function () {
+        domManager.addEventListener('#delete-board-button', 'click', deleteBoard)
+    },
     // renameBoard: function () {
     //     const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
     //     domManager.addChild(".user-panel", inputBoxAndButton);
@@ -56,6 +38,12 @@ export let boardsManager = {
     //     parent.replaceChild(newElement, element);
     // }
 };
+
+function deleteBoard(clickEvent) {
+    const boardId = clickEvent.target.dataset.boardId;
+    dataHandler.deleteBoard(boardId);
+}
+
 
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;

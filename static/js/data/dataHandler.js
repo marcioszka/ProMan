@@ -2,6 +2,9 @@ export let dataHandler = {
     getBoards: async function () {
         return await apiGet("/api/boards");
     },
+    // getPublicBoards: async function () {
+    //     return await apiGet("/api/public_boards")
+    // },
     getBoard: async function (boardId) {
         // the board is retrieved and then the callback function is called with the board
         //return apiGet(`/api/boards/${boardId}`)
@@ -18,15 +21,14 @@ export let dataHandler = {
     getCard: async function (cardId) {
         // the card is retrieved and then the callback function is called with the card
     },
-    //createNewBoard: async function (boardTitle) {
-        // creates new board, saves it and calls the callback function with its data
-       // return await apiPost('/api/current_board', getBoardName)
-    //},
     createNewBoard: async function (boardTitle) {
         return await apiPost('/api/current_board', { body: {"title": boardTitle}})
     },
     createNewCard: async function (cardTitle, boardId, statusId) {
         // creates new card, saves it and calls the callback function with its data
+    },
+    deleteBoard: async function (boardId) {
+        return await apiDelete('/api/delete_board/${boardId}', {boardId:boardId});
     },
 };
 
@@ -49,7 +51,14 @@ async function apiPost(url, payload) {
     }
 }
 
-async function apiDelete(url) {
+async function apiDelete(url, payload) {
+    let response = await fetch(url, {
+        method: "DELETE",
+        body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        return await response.json();
+    }
 }
 
 async function apiPut(url) {

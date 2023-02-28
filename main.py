@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'b$2b$12$UqwJUUmOTIXVJ1NFd.UMg.'
 load_dotenv()
 
+
 @app.route("/")
 def index():
     """
@@ -29,6 +30,7 @@ def get_boards():
     # else:
     #     return queries.get_public_boards()
     return queries.get_boards()
+
 
 @app.route("/api/boards/<title>", methods=['POST', 'GET'])
 @json_response
@@ -52,6 +54,18 @@ def create_board(title):
 # def get_board(board_id: int):
 #     return queries.get_board(board_id)
 
+
+@app.route("/api/delete_board/<int:board_id>")
+@json_response
+def delete_board(board_id: int):
+    """
+    Deleting all boards.
+    """
+    queries.delete_cards(board_id)
+    queries.delete_board(board_id)
+    return request.get_json()
+
+
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response
 def get_cards_for_board(board_id: int):
@@ -60,6 +74,7 @@ def get_cards_for_board(board_id: int):
     :param board_id: id of the parent board
     """
     return queries.get_cards_for_board(board_id)
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -74,6 +89,7 @@ def register():
             return render_template("error.html")
     else:
         return render_template("registration_form.html")
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -99,6 +115,7 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
 
 def main():
     app.run(debug=True)
