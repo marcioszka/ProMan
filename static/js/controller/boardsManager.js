@@ -10,15 +10,22 @@ export let boardsManager = {
         const boards = structuredClone(allBoards);
         if(user_id != null){ //zalogowany
              for (let eachBoard of boards){
+                 console.log(Object.values(eachBoard)[2]);
                  if (Object.values(eachBoard)[2] !== null && Object.values(eachBoard)[2] !== user_id)
-                        {delete boards[eachBoard]};
+                        {
+                            //console.log(Object.values(eachBoard)[2]);
+                            //delete boards[eachBoard]
+                            };
              }
          }
         else{ //niezalogowany
             for (let eachBoard of boards){
-                if (Object.values(eachBoard)[2] !== null) {delete boards[eachBoard]};
-            }
-            console.log(boards);
+                console.log(Object.values(eachBoard)[2]);
+                if (Object.values(eachBoard)[2] !== null) {
+                    //console.log(Object.values(eachBoard)[2]);
+                    //delete boards[eachBoard]
+                    };
+                }
             };
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);

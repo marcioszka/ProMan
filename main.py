@@ -14,7 +14,7 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    return render_template('index.html', session=session)
+    return render_template('index.html')
 
 
 @app.route("/api/boards")
@@ -82,7 +82,7 @@ def login():
             session['user'] = user_login
             session['logged'] = True
             session['id'] = queries.get_user_id(user_login)
-            return redirect('/', session=session)
+            return redirect('/')
         else:
             return render_template('error.html')
     elif request.method == 'GET':
