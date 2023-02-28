@@ -25,9 +25,9 @@ def get_boards():
     """
     return queries.get_boards()
 
-@app.route("/api/boards/<str: title>", methods=['POST'])
+@app.route("/api/boards/<title>", methods=['POST', 'GET'])
 @json_response
-def create_board(title: str):
+def create_board(title):
     """
     Handle new board
     """
