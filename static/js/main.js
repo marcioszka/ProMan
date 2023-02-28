@@ -2,17 +2,12 @@ import {boardsManager} from "./controller/boardsManager.js";
 
 function init() {
     boardsManager.loadBoards();
-    let username = document.getElementById('user-id');
-    if(username != null){
-        let createNewBoardButton = document.getElementById('add-board-private');
-        createNewBoardButton.addEventListener('click', boardsManager.createBoard)
-    }
-    else{
-        let createNewBoardButton = document.getElementById('add-board');
-        createNewBoardButton.addEventListener('click', boardsManager.createBoard);
-
-    };
-
+    let createNewBoardButton = document.getElementById('add-board-box');
+    createNewBoardButton.addEventListener('click', boardsManager.createBoard);
+    //createNewBoardButton.addEventListener("mouseover", ()=>{
+    //    createNewBoardButton.removeEventListener("click", boardsManager.createBoard)
+    //}); OR:
+    //createNewBoardButton.removeEventListener('click', boardsManager.createBoard)
 }
 
 init();

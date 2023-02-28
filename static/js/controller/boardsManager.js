@@ -18,18 +18,19 @@ export let boardsManager = {
             domManager.addEventListener(`.board-header[data-board-id="${board.id}"]`,
                 "click",
                 toggleHideShowBoardColumns)
+            //domManager.addEventListener(''
         }
     },
     createBoard: function () {
         const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
-        domManager.addChild(".user-panel", inputBoxAndButton);
+        domManager.addChild(".add-board", inputBoxAndButton);
         domManager.addEventListener('.save-data',
             "click",
             addBoard);
     }
-    // changeName: async function (element) {
-    //     let newElement = document.createElement('input');
-    //     newElement.setAttribute('class', 'change-board-name');
+    // renameBoard: function () {
+    //     const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
+    //     domManager.addChild(".user-panel", inputBoxAndButton);
     //     let parent = element.parentElement;
     //     parent.replaceChild(newElement, element);
     // }
@@ -53,7 +54,6 @@ function toggleHideShowBoardColumns(clickEvent){
 }
 function addBoard(clickEvent) {
     const newBoardName = clickEvent.target.previousElementSibling.value;
-    console.log(newBoardName);//document.getElementById('add-board-title-box').value;
     dataHandler.createNewBoard(newBoardName);
     document.getElementById('input-box').remove();
 }
