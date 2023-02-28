@@ -23,6 +23,11 @@ def get_boards():
     """
     All the boards
     """
+    # user_id = session.get('id')
+    # if user_id:
+    #     return queries.get_boards()
+    # else:
+    #     return queries.get_public_boards()
     return queries.get_boards()
 
 @app.route("/api/boards/<title>", methods=['POST', 'GET'])
