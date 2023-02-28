@@ -15,6 +15,12 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
+    # user_id = session.get('id')
+    # if user_id:
+    #     return queries.get_boards()
+    # else:
+    #     return queries.get_public_boards()
+    # do zmiennej boards przypiac odpowiednie query i je zjasonowac i przekazac do jinja
     return render_template('index.html')
 
 
@@ -24,30 +30,20 @@ def get_boards():
     """
     All the boards
     """
-    # user_id = session.get('id')
-    # if user_id:
-    #     return queries.get_boards()
-    # else:
-    #     return queries.get_public_boards()
     return queries.get_boards()
 
 
-@app.route("/api/boards/<title>", methods=['POST', 'GET'])
+@app.route("/api/boards/new_board", methods=['POST', 'GET'])
 @json_response
-def create_board(title):
+def create_board():
     """
     Handle new board
     """
-    username = session.get('user', default='Unknown')
     data = request.get_json(force=True)
     content = data["body"]
     title = content["title"]
-    if request.method == 'POST':
-        if 'user' in session:
-            user_id = queries.get_user_id(username)
-            return queries.add_private_board(user_id, title)
-        else:
-            return queries.add_board(title)
+    return queries.add_board(title)
+
 
 # @app.route("/api/boards/<int: board_id>", methods=['GET'])
 # @json_response

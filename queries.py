@@ -56,17 +56,17 @@ def get_public_boards():
 
 
 def add_board(title):
-    return data_manager.execute_select(
+    return data_manager.execute_update(
         """
-        INSERT INTO boards (title) VALUES (%(title)s) RETURNING id
+        INSERT INTO boards (title) VALUES (%(title)s)
         """, {'title': title}
     )
 
 
 def add_private_board(user_id, title):
-    return data_manager.execute_select(
+    return data_manager.execute_update(
         """
-        INSERT INTO boards (title, user_id) VALUES (%(title)s, %(user_id)s) RETURNING id
+        INSERT INTO boards (title, user_id) VALUES (%(title)s, %(user_id)s)
         """, {'title': title, 'user_id': user_id}
     )
 
