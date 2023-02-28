@@ -14,7 +14,7 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    return render_template('index.html')
+    return render_template('index.html', session=session)
 
 
 @app.route("/api/boards")
@@ -23,16 +23,11 @@ def get_boards():
     """
     All the boards
     """
-    # user_id = session.get('id', default='null')
-    # if 'user' in session:
-    #     return queries.get_private_boards(user_id)
-    # else:
-    #     return queries.get_public_boards()
     return queries.get_boards()
 
-@app.route("/api/current_board", methods=['GET', 'POST'])
+@app.route("/api/boards/<str: title>", methods=['POST'])
 @json_response
-def create_board():
+def create_board(title: str):
     """
     Handle new board
     """
@@ -46,10 +41,8 @@ def create_board():
             return queries.add_private_board(user_id, title)
         else:
             return queries.add_board(title)
-    else:
-        return content
 
-# @app.route("/api/<int: board_id>", methods=['GET'])
+# @app.route("/api/boards/<int: board_id>", methods=['GET'])
 # @json_response
 # def get_board(board_id: int):
 #     return queries.get_board(board_id)
@@ -89,7 +82,7 @@ def login():
             session['user'] = user_login
             session['logged'] = True
             session['id'] = queries.get_user_id(user_login)
-            return render_template('index.html', session=session)
+            return redirect('/', session=session)
         else:
             return render_template('error.html')
     elif request.method == 'GET':
