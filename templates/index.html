@@ -15,17 +15,23 @@
 
     </head>
     <body>
-    <input type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">
-        {% if session['logged'] %}
-            <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
-            <div class="user-panel"><input id="add-board-private" type="button" value="Create new private board">
-            <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden /></div>
-            <p>Welcome on your panel,<strong> {{ session['user'] }}</strong></p>
-        {% else %}
-            <a href="{{ url_for('register') }}" id="registration">Sign up</a>
-            <a href="{{ url_for('login') }}" id="login">Sign in</a>
-            <div class="user-panel"><input id="add-board" type="button" onclick="getBoardName" value="Create new board"></div>
-        {% endif %}
+        <div class="user-panel">
+            {% if session['logged'] %}
+                <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
+                <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden /> Welcome on your panel,<strong> {{ session['user'] }}</strong>
+            {% else %}
+                <a href="{{ url_for('register') }}" id="registration">Sign up</a>
+                <a href="{{ url_for('login') }}" id="login">Sign in</a>
+            {% endif %}
+            <input type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">
+        </div>
+        <div class="add-board">
+            {% if session['logged'] %}
+                <input id="add-board-box" type="button" value="Create new private board">
+            {% else %}
+                <input id="add-board-box" type="button" value="Create new board">
+            {% endif %}
+        </div>
         <div id="root">
         </div>
     </body>
