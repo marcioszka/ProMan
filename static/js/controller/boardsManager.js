@@ -5,7 +5,21 @@ import {cardsManager} from "./cardsManager.js";
 
 export let boardsManager = {
     loadBoards: async function () {
-        const boards = await dataHandler.getBoards();
+        const user_id = document.getElementById('user-id');
+        const allBoards = await dataHandler.getBoards();
+        const boards = structuredClone(allBoards);
+        if(user_id != null){ //zalogowany
+             for (let eachBoard of boards){
+                 if (Object.values(eachBoard)[2] !== null && Object.values(eachBoard)[2] !== user_id)
+                        {delete boards[eachBoard]};
+             }
+         }
+        else{ //niezalogowany
+            for (let eachBoard of boards){
+                if (Object.values(eachBoard)[2] !== null) {delete boards[eachBoard]};
+            }
+            console.log(boards);
+            };
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
@@ -18,7 +32,7 @@ export let boardsManager = {
             domManager.addEventListener(`.board-header[data-board-id="${board.id}"]`,
                 "click",
                 toggleHideShowBoardColumns)
-            //domManager.addEventListener(''
+            //domManager.addEventListener()
         }
     },
     createBoard: function () {
