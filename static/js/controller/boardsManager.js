@@ -23,7 +23,7 @@ export let boardsManager = {
     createBoard: function () {
         const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
         domManager.addChild(".user-panel", inputBoxAndButton);
-        domManager.addEventListener('.add-new-board',
+        domManager.addEventListener('.save-data',
             "click",
             addBoard);
     }
@@ -55,5 +55,5 @@ function addBoard(clickEvent) {
     const newBoardName = clickEvent.target.previousElementSibling.value;
     console.log(newBoardName);//document.getElementById('add-board-title-box').value;
     dataHandler.createNewBoard(newBoardName);
-    document.getElementById('board-name-input').remove();
+    document.getElementById('input-box').remove();
 }
