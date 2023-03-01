@@ -26,6 +26,22 @@ def get_boards():
     """
     return queries.get_boards()
 
+@app.route("/api/public_boards")
+@json_response
+def get_boards():
+    """
+    All the boards
+    """
+    return queries.get_public_boards()
+
+@app.route("/api/private_boards")
+@json_response
+def get_boards():
+    """
+    All the boards
+    """
+    user_id = session.get('id')
+    return queries.get_private_boards(user_id)
 
 @app.route("/api/boards/new_board", methods=['POST', 'GET'])
 @json_response
