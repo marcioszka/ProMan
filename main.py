@@ -24,24 +24,11 @@ def get_boards():
     """
     All the boards
     """
-    return queries.get_boards()
-
-@app.route("/api/public_boards")
-@json_response
-def get_boards():
-    """
-    All the boards
-    """
-    return queries.get_public_boards()
-
-@app.route("/api/private_boards")
-@json_response
-def get_boards():
-    """
-    All the boards
-    """
     user_id = session.get('id')
-    return queries.get_private_boards(user_id)
+    if user_id:
+        return queries.get_private_boards(user_id)
+    else:
+        return queries.get_public_boards()
 
 @app.route("/api/boards/new_board", methods=['POST', 'GET'])
 @json_response
@@ -52,7 +39,11 @@ def create_board():
     data = request.get_json(force=True)
     content = data["body"]
     title = content["title"]
-    return queries.add_board(title)
+    user_id = session.get('id')
+    if user_id:
+        return queries.add_private_board(user_id, title)
+    else:
+        return queries.add_board(title)
 
 
 @app.route("/api/boards/new_name", methods=['PUT'])

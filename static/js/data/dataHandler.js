@@ -2,12 +2,6 @@ export let dataHandler = {
     getBoards: async function () {
         return await apiGet("/api/boards");
     },
-    getPublicBoards: async function () {
-        return await apiGet("/api/public_boards")
-    },
-    getPrivateBoards: async function () {
-        return await apiGet("/api/private_boards")
-    },
     getBoard: async function (boardId) {
         // the board is retrieved and then the callback function is called with the board
         //return apiGet(`/api/boards/${boardId}`)
