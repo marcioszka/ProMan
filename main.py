@@ -39,13 +39,13 @@ def create_board():
     return queries.add_board(title)
 
 
-@app.route("/api/boards/<int: board_id>/<str: board_title>", methods=['PUT'])
+@app.route("/api/boards/new_name", methods=['PUT'])
 @json_response
-def rename_board(board_id: int, board_title: str):
-    # data = request.get_json(force=True)
-    # content = data["body"]
-    # board_title = content["title"]
-    # board_id = content["id"]
+def rename_board():
+    data = request.get_json(force=True)
+    content = data["body"]
+    board_title = content["title"]
+    board_id = content["id"]
     return queries.update_board_name(board_id, board_title)
 
 
