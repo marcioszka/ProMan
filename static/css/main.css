@@ -79,6 +79,11 @@ section.board{
 }
 /*.board-add - add card button*/
 
+.delete-column-button{
+    width: 2px;
+    background: transparent;
+}
+
 .toggle-board-button {
     float: right;
     margin: 13px;
