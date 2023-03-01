@@ -43,7 +43,7 @@ def get_boards():
 def get_private_boards(user_id):
     return data_manager.execute_select(
         """
-        SELECT * FROM boards WHERE user_id <> 'null' OR user_id=%(user_id)s
+        SELECT * FROM boards WHERE user_id IS NULL OR user_id=%(user_id)s
         ;
         """, {'user_id': user_id}
     )
@@ -51,7 +51,7 @@ def get_private_boards(user_id):
 
 def get_public_boards():
     return data_manager.execute_select(
-        """SELECT * FROM boards WHERE user_id <> 'null';"""
+        """SELECT * FROM boards WHERE user_id IS NULL;"""
     )
 
 
