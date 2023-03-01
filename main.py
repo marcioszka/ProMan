@@ -15,12 +15,6 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    # user_id = session.get('id')
-    # if user_id:
-    #     return queries.get_boards()
-    # else:
-    #     return queries.get_public_boards()
-    # do zmiennej boards przypiac odpowiednie query i je zjasonowac i przekazac do jinja
     return render_template('index.html')
 
 
@@ -45,13 +39,17 @@ def create_board():
     return queries.add_board(title)
 
 
-# @app.route("/api/boards/<int: board_id>", methods=['GET'])
-# @json_response
-# def get_board(board_id: int):
-#     return queries.get_board(board_id)
+@app.route("/api/boards/<int: board_id>/<str: board_title>", methods=['PUT'])
+@json_response
+def rename_board(board_id: int, board_title: str):
+    # data = request.get_json(force=True)
+    # content = data["body"]
+    # board_title = content["title"]
+    # board_id = content["id"]
+    return queries.update_board_name(board_id, board_title)
 
 
-@app.route("/api/delete_board/<int:board_id>")
+@app.route("/api/boards/<int:board_id>", methods=['GET', 'DELETE'])
 @json_response
 def delete_board(board_id: int):
     """
@@ -61,6 +59,10 @@ def delete_board(board_id: int):
     queries.delete_board(board_id)
     return request.get_json()
 
+@app.route("/api/boards/new_column", methods=['POST', 'GET'])
+@json_response
+def add_column(column_title):
+    return queries.add_column(column_title)
 
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response

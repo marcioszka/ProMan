@@ -129,3 +129,23 @@ def delete_cards(board_id):
         """,
         {'board_id': board_id}
     )
+
+def add_column(title):
+    data_manager.execute_update(
+        """
+            INSERT INTO statuses (title)
+            VALUES (%(title)s);
+            """,
+        {'title': title}
+    )
+
+def update_board_name(id, title):
+    data_manager.execute_update(
+        """
+            UPDATE boards
+            SET title = %(title)s
+            WHERE id = %(id)s;
+        """,
+        {'id': id, 'title': title}
+    )
+
