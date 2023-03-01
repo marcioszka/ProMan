@@ -74,6 +74,10 @@ section.board{
     font-size: 16px;
 }
 
+#change-board-name-box{
+    display: block;
+}
+
 .board-title, .board-add, .toggle-board-button {
     display: inline-block;
 }
