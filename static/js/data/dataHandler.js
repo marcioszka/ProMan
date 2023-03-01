@@ -35,7 +35,7 @@ export let dataHandler = {
     },
     renameBoard: async function (boardTitle, boardId){
         console.log(boardTitle, boardId);
-        return await apiPut(`/api/boards/${boardId}/${boardTitle}`, {body: {"id": boardId, "title": boardTitle}})
+        return await apiPut(`/api/boards/new_name`, {body: {"id": boardId, "title": boardTitle}})
     },
 };
 

@@ -18,10 +18,15 @@ export let boardsManager = {
             domManager.addEventListener(`.board-header[data-board-id="${board.id}"]`,
                 "click",
                 toggleHideShowBoardColumns);
-            //domManager.addEventListener();
+            domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
+                'mouseover',
+                renameBoard); //eventType ma byc click
             domManager.addEventListener(`.add-column-button[data-board-id="${board.id}"]`,
                 'click',
                 addColumn);
+            domManager.addEventListener(`.delete-board-button[data-board-id="${board.id}"]`,
+                'click',
+                deleteBoard);
         }
     },
     createBoard: function () {
@@ -31,16 +36,32 @@ export let boardsManager = {
             "click",
             addBoard);
     },
-    removeBoard: function () {
-        domManager.addEventListener('#delete-board-button', 'click', deleteBoard)
+    renameColumn: function () {
+        const columns = dataHandler.getColumns(); //getColumns : TO CREATE
+        for (let column of columns){
+            //stworzyć inputa na tresć i podmienić tytuł nim
+            //z inputa pobrac naze kolumny, ja wyswietlac i wyslac jako status
+        }
+
     },
-    // renameBoard: function () {
-    //     const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
-    //     domManager.addChild(".user-panel", inputBoxAndButton);
-    //     let parent = element.parentElement;
-    //     parent.replaceChild(newElement, element);
-    // },
 };
+
+function renameBoard(clickEvent) {
+    const boardNameInput = document.createElement('input');
+    boardNameInput.setAttribute('id', 'change-board-name-box');
+    boardNameInput.setAttribute('required', 'true');
+    boardNameInput.setAttribute('placeholder', 'Rename board')
+    const renameBoardButton = clickEvent.target;
+    renameBoardButton.insertAdjacentElement('afterend', boardNameInput);
+    console.log(boardNameInput, renameBoardButton); //wyswietla
+    boardNameInput.onblur = function(event){
+        let newBoardName = boardNameInput.value;
+        console.log(newBoardName, boardNameInput); //nie wyswietla, jak na clickEvent
+        const boardId = parseInt(clickEvent.target.dataset.boardId);
+        dataHandler.renameBoard(newBoardName, boardId);
+        document.getElementById('change-board-name-box').remove();
+    }
+}
 
 function deleteBoard(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
@@ -56,12 +77,14 @@ function toggleHideShowBoardColumns(clickEvent){
     const hideShowToggler = clickEvent.target;
     const hideShow = hideShowToggler.nextElementSibling;
     const isHidden = hideShow.style.display === 'none';
+    console.log();
     if(isHidden) {
         hideShow.style.display = 'block'
     }
     else{
         hideShow.style.display = 'none'
     };
+    clickEvent.stopPropagation();
 }
 function addBoard(clickEvent) {
     const newBoardName = clickEvent.target.previousElementSibling.value;
@@ -77,7 +100,6 @@ function addColumn(clickEvent) {
     addColumnButton.insertAdjacentElement('afterend', columnNameInput);
     columnNameInput.onblur = function(event){
         let newColumnName = columnNameInput.value;
-        console.log(newColumnName);
         const columnBuilder = htmlFactory(htmlTemplates.column);
         const content = columnBuilder(newColumnName);
         const boardId = parseInt(clickEvent.target.dataset.boardId);

@@ -27,7 +27,7 @@ export function htmlFactory(template) {
 function boardBuilder(board) {
     return `<div class="board-container">
                 <section class="board-header" data-board-id=${board.id}>
-                    <button id="delete-board-button" class="delete-board-button">🗑️</button>
+                    <button class="delete-board-button" data-board-id=${board.id}>🗑️</button>
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
                     <button class="toggle-board-button" data-board-id="${board.id}">Show Cards</button>
                 </section>
@@ -58,10 +58,10 @@ function inputBoxBuilder(){
 }
 
 function columnBuilder(columnTitle) {
-    return `<div className="board-column">
-            <div className="board-column-title">${columnTitle}
+    return `<div class="board-column">
+            <div class="board-column-title">${columnTitle}
             <button class="delete-column-button" id="delete-column-button">🗑️</button></div>
-            <div className="board-column-cards"></div>
+            <div class="board-column-cards"></div>
             </div>
             `
 }
