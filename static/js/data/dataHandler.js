@@ -37,8 +37,10 @@ export let dataHandler = {
         return await apiDelete(`/api/cards/delete_card/${cardId}`, {cardId:cardId});
     },
     renameBoard: async function (boardTitle, boardId){
-        console.log(boardTitle, boardId);
         return await apiPut(`/api/boards/new_name`, {body: {"id": boardId, "title": boardTitle}})
+    },
+    renameCard: async function (cardTitle, cardId){
+        return await apiPut(`/api/cards/rename_card/${cardId}`, {body: {"id": cardId, "title": cardTitle}})
     },
 };
 
