@@ -18,11 +18,15 @@
         <div class="user-panel">
             {% if session['logged'] %}
                 <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
+                <label for="user-id">
                 <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden /> Welcome on your panel,<strong> {{ session['user'] }}</strong>
+                </label>
             {% else %}
                 <a href="{{ url_for('register') }}" id="registration">Sign up</a>
                 <a href="{{ url_for('login') }}" id="login">Sign in</a>
+                <label for="user-id">
                 <input id="user-id" name='user-id' value='false' hidden />
+                </label>
             {% endif %}
             <input type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">
         </div>

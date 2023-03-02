@@ -30,6 +30,7 @@ def get_boards():
     else:
         return queries.get_public_boards()
 
+
 @app.route("/api/boards/new_board", methods=['POST', 'GET'])
 @json_response
 def create_board():
@@ -66,19 +67,11 @@ def delete_board(board_id: int):
     queries.delete_board(board_id)
     return request.get_json()
 
+
 @app.route("/api/boards/new_column", methods=['POST', 'GET'])
 @json_response
 def add_column(column_title):
     return queries.add_column(column_title)
-
-@app.route("/api/boards/<int:board_id>/cards/")
-@json_response
-def get_cards_for_board(board_id: int):
-    """
-    All cards that belongs to a board
-    :param board_id: id of the parent board
-    """
-    return queries.get_cards_for_board(board_id)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -120,6 +113,37 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+
+@app.route("/api/boards/<int:board_id>/cards/")
+@json_response
+def get_cards_for_board(board_id: int):
+    """
+    All cards that belongs to a board
+    :param board_id: id of the parent board
+    """
+    return queries.get_cards_for_board(board_id)
+
+
+@app.route("/api/cards/")
+@json_response
+def get_all_cards():
+
+    return queries.get_all_cards()
+
+
+@app.route("/api/cards/delete_card/<int:card_id>", methods=['GET', 'DELETE'])
+@json_response
+def delete_card(card_id: int):
+    return queries.delete_card(card_id)
+
+
+@app.route("/api/new_card", methods=['GET', 'POST'])
+@json_response
+def create_card():
+    data = {'title': "DUPATESTY", 'board_id': 4, 'card_order': 1}
+    status_id = 2
+    return queries.create_card(data, status_id)
 
 
 def main():
