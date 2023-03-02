@@ -19,8 +19,8 @@ export let boardsManager = {
                 "click",
                 toggleHideShowBoardColumns);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
-                'mouseover',
-                renameBoard); //eventType ma byc click
+                'click',
+                renameBoard);
             domManager.addEventListener(`.add-column-button[data-board-id="${board.id}"]`,
                 'click',
                 addColumn);
@@ -29,12 +29,16 @@ export let boardsManager = {
                 deleteBoard);
         }
     },
-    createBoard: function () {
-        const inputBoxAndButton = htmlFactory(htmlTemplates.inputBox)();
-        domManager.addChild(".add-board", inputBoxAndButton);
+    createBoard: function (clickEvent) {
+        const createBoardButton = clickEvent.target;
+        createBoardButton.style.display = 'none';
+        const inputBuilder = htmlFactory(htmlTemplates.inputBox);
+        const inputBox = inputBuilder();
+        domManager.addChild(".add-board", inputBox);
         domManager.addEventListener('.save-data',
             "click",
             addBoard);
+        createBoardButton.style.display = 'block';
     },
     renameColumn: function () {
         const columns = dataHandler.getColumns(); //getColumns : TO CREATE
@@ -46,7 +50,8 @@ export let boardsManager = {
     },
 };
 
-function renameBoard(clickEvent) {
+function renameBoard(clickEvent) { //poprawic kod
+    clickEvent.stopPropagation();
     const boardNameInput = document.createElement('input');
     boardNameInput.setAttribute('id', 'change-board-name-box');
     boardNameInput.setAttribute('required', 'true');
@@ -92,7 +97,7 @@ function addBoard(clickEvent) {
     document.getElementById('input-box').remove();
 }
 
-function addColumn(clickEvent) {
+function addColumn(clickEvent) {  //poprawic kod
     const columnNameInput = document.createElement('input');
     columnNameInput.setAttribute('id', 'add-column-name-box');
     columnNameInput.setAttribute('required', 'true');
