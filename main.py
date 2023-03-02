@@ -140,8 +140,8 @@ def delete_card(card_id: int):
 
 @app.route("/api/new_card", methods=['GET', 'POST'])
 @json_response
-def create_card():
-    data = {'title': "DUPATESTY", 'board_id': 4, 'card_order': 1}
+def create__card():
+    data = {'title': "JESIENIARA", 'board_id': 4, 'card_order': 2}
     status_id = 2
     return queries.create_card(data, status_id)
 

@@ -159,7 +159,7 @@ def create_card(data, status_id):
     return data_manager.execute_update(
         """
         INSERT INTO cards (board_id, status_id, title, card_order) 
-        VALUES ($(board_id)s, $(status_id)s, $(title)s, $(card_order))
+        VALUES (%(board_id)s, %(status_id)s, %(title)s, %(card_order)s)
         """,
         {'board_id': data['board_id'],
          'status_id': status_id,
