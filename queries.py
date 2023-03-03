@@ -149,3 +149,5 @@ def update_board_name(id, title):
         {'id': id, 'title': title}
     )
 
+def get_status_id(title):
+    data_manager.execute_select('SELECT id FROM statuses WHERE title=%(title)s', {'title': title}, fetchall=False)
