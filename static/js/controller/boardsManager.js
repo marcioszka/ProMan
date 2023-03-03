@@ -98,10 +98,9 @@ function addColumn(clickEvent) {
     addColumnButton.insertAdjacentElement('afterend', columnNameInput);
     columnNameInput.onblur = function(event){
         let newColumnName = columnNameInput.value;
-        dataHandler.addColumn(newColumnName);
+        dataHandler.setColumnName(newColumnName);
         const columnBuilder = htmlFactory(htmlTemplates.column);
         const content = columnBuilder(newColumnName);
-        dataHandler.addColumn(newColumnName.toLowerCase());
         const boardId = parseInt(clickEvent.target.dataset.boardId);
         domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();

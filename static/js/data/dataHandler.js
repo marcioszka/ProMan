@@ -28,8 +28,9 @@ export let dataHandler = {
     deleteBoard: async function (boardId) {
         return await apiDelete(`/api/boards/${boardId}`, {boardId:boardId});
     },
-    addColumn: async function (columnTitle){
-        return await apiPost(`/api/statuses`, {body:{"title": columnTitle}})
+    setColumnName: async function (columnTitle){
+        const title = columnTitle.toLowerCase();
+        return await apiPost(`/api/statuses`, {body:{"title": title}})
     },
     renameBoard: async function (boardTitle, boardId){
         return await apiPut(`/api/boards/new_name`, {body: {"id": boardId, "title": boardTitle}})
