@@ -94,13 +94,15 @@ section.board{
 }
 
 .board-columns{
-    display: flex;
+    display: inline-flex;
+    /*display: flex;*/
     flex-wrap: nowrap;
 }
 
 .board-column{
     padding: 10px;
     flex: 1;
+    max-width: 25%;
 }
 
 .board-column-content{
