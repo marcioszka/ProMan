@@ -29,7 +29,7 @@ export let dataHandler = {
         return await apiDelete(`/api/boards/${boardId}`, {boardId:boardId});
     },
     addColumn: async function (columnTitle){
-        return await apiPost(`/api/boards/new_column`, {body:{"title": columnTitle}})
+        return await apiPost(`/api/statuses`, {body:{"title": columnTitle}})
     },
     renameBoard: async function (boardTitle, boardId){
         return await apiPut(`/api/boards/new_name`, {body: {"id": boardId, "title": boardTitle}})

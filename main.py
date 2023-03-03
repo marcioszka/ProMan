@@ -66,9 +66,12 @@ def delete_board(board_id: int):
     queries.delete_board(board_id)
     return request.get_json()
 
-@app.route("/api/boards/new_column", methods=['POST', 'GET'])
+@app.route("/api/statuses", methods=['POST', 'GET'])
 @json_response
-def add_column(column_title):
+def add_column():
+    data = request.get_json(force=True)
+    content = data["body"]
+    column_title = content["title"]
     return queries.add_column(column_title)
 
 @app.route("/api/boards/<int:board_id>/cards/")
