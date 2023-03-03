@@ -1,15 +1,19 @@
 export const htmlTemplates = {
     board: 1,
     card: 2,
-    inputBox: 3,
-    column: 4
+    inputPanel: 3,
+    column: 4,
+    inputField: 5,
+    button: 6
 }
 
 export const builderFunctions = {
     [htmlTemplates.board]: boardBuilder,
     [htmlTemplates.card]: cardBuilder,
-    [htmlTemplates.inputBox]: inputBoxBuilder,
-    [htmlTemplates.column]: columnBuilder
+    [htmlTemplates.inputPanel]: inputPanelBuilder,
+    [htmlTemplates.column]: columnBuilder,
+    [htmlTemplates.inputField]: inputFieldBuilder,
+    [htmlTemplates.button]: saveButtonBuilder
 };
 
 export function htmlFactory(template) {
@@ -51,15 +55,17 @@ function boardBuilder(board) {
 function cardBuilder(card) {
     return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
 }
-// WERSJA 1
-// function inputBoxBuilder(){
-//     return `<div id="input-box"><input type="text" placeholder="Board name" required>
-//             <input type="button" class="save-data" value="Save" type="submit" onclick="location.reload()"></div>`
-// }
 
-function inputBoxBuilder(){
-    return `<div id="input-box"><input type="text" required>
-            <input type="button" class="save-data" value="Save" type="submit" onclick="location.reload()"></div>`
+function inputPanelBuilder(){
+    return `<div id="input-box"><input type="text" required><input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">
+            </div>`
+}
+function inputFieldBuilder(title){
+    return `<input type="text" placeholder="${title}" required>`
+}
+
+function saveButtonBuilder(){
+    return `<input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">`
 }
 
 function columnBuilder(columnTitle) {
