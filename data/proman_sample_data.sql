@@ -96,3 +96,5 @@ ALTER TABLE IF EXISTS ONLY boards
 ALTER TABLE ONLY boards
     ADD CONSTRAINT fk_boards_user_id FOREIGN KEY (user_id) REFERENCES users(id);
 
+ALTER TABLE ONLY statuses
+    ADD CONSTRAINT no_duplicates UNIQUE (title);
