@@ -17,7 +17,7 @@ body{
     right: 1%;
 }
 
-#delete-board-button{
+.delete-board-button{
     background: transparent;
 }
 
