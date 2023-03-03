@@ -26,11 +26,17 @@ export let boardsManager = {
             domManager.addEventListener(`.add-column-button[data-board-id="${board.id}"]`,
                 'click',
                 addColumn);
+            let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
+            for(let i=0; i<columnNames.length; i++){
+                const columnName = columnNames.item(i);
+                console.log(columnName);
+                columnName.addEventListener('click', renameColumn);
+            }
         }
     },
     createBoard: function (clickEvent) {
         clickEvent.target.style.display = 'none';
-        const inputBuilder = htmlFactory(htmlTemplates.inputBox);
+        const inputBuilder = htmlFactory(htmlTemplates.inputPanel);
         const inputBox = inputBuilder();
         domManager.addChild(".add-board", inputBox);
         domManager.addEventListener('.save-data',
@@ -38,6 +44,33 @@ export let boardsManager = {
             addBoard);
     },
 };
+
+function renameColumn(clickEvent) {
+    const oldName = clickEvent.target.innerText;
+    const newColumnNameField = document.createElement('input');
+    newColumnNameField.setAttribute('placeholder', oldName);
+    const boardId = parseInt(clickEvent.target.dataset.boardId);
+    clickEvent.target.style.display = "none";
+    clickEvent.target.insertAdjacentElement('afterend', newColumnNameField);
+    console.log('ok', oldName, newColumnNameField, clickEvent.target);
+    newColumnNameField.addEventListener('keypress', handleKeyPress);
+    newColumnNameField.addEventListener('blur', ()=> {return});
+    //newColumnNameField.remove();
+    //clickEvent.target.style.display = "block";
+    }
+
+function handleKeyPress(keyEvent) {
+    keyEvent.stopPropagation();
+    const newName = keyEvent.target.value;
+    if(keyEvent.key == 'Enter' && newName != "")
+    {
+        const columnId = 19;    //TODO
+        dataHandler.renameColumn(newName, columnId);
+    }
+    else if (keyEvent.key == 'Escape'){
+        return;
+    }
+}
 
 function renameBoard(clickEvent) {
     clickEvent.stopPropagation();
@@ -76,12 +109,6 @@ function toggleHideShowBoardColumns(clickEvent) {
     } else {
         hideShow.style.display = 'none'
     };
-    clickEvent.stopPropagation();
-    //TODO
-    const columns = clickEvent.target.nextElementSibling.querySelectorAll('.board-column-title');
-    //const columns = columnPanel.getElementsByClassName('.board-column-title');
-    console.log(columnPanel);
-    //TODO
 }
 
 function addBoard(clickEvent) {
@@ -100,8 +127,8 @@ function addColumn(clickEvent) {
         let newColumnName = columnNameInput.value;
         dataHandler.setColumnName(newColumnName);
         const columnBuilder = htmlFactory(htmlTemplates.column);
-        const content = columnBuilder(newColumnName);
         const boardId = parseInt(clickEvent.target.dataset.boardId);
+        const content = columnBuilder(newColumnName, boardId);
         domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();
     }
