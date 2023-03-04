@@ -92,6 +92,19 @@ def get_cards_for_board(board_id: int):
     return queries.get_cards_for_board(board_id)
 
 
+@app.route('/api/boards/<int:board_id>/cards/new_card', methods=['POST'])
+@json_response
+def add_card(board_id):
+    data = request.get_json(force=True)
+    content = data["body"]
+    card_title = content["title"]
+    status_id = content["status_id"]
+    board_id = content["board_id"]
+    user_id = session.get('id')
+    result = queries.add_card(board_id, status_id, card_title, user_id)
+    return result["id"]
+
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
