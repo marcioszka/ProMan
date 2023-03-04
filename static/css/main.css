@@ -31,7 +31,7 @@ body{
 }
 
 h1, .board-title, .board-column-title{
-    font-weight: 100;
+    font-weight: 200;
 }
 
 h1{
@@ -65,7 +65,8 @@ section.board{
 .board-header{
     /*height: 50px;*/
     background: #fff;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: 8px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .board-title{
@@ -93,9 +94,10 @@ section.board{
     margin: 13px;
 }
 
-.board-columns{
-    display: inline-flex;
-    /*display: flex;*/
+.board-columns, .board-column, .columns-in-boards{
+    /*display: inline-flex;*/
+    align-items: center;
+    display: flex;
     flex-wrap: nowrap;
 }
 
@@ -161,9 +163,9 @@ section.board{
     padding-right: 16px;
 }
 
-a:link {
+a:link, link{
     background-color: mediumpurple;
-    color: black;
+    color: peachpuff;
     font-size: 15px;
     padding: 10px 24px;
     text-align: center;
@@ -175,7 +177,7 @@ a:link {
 
 a:visited {
     background-color: rebeccapurple;
-    color: black;
+    color: peachpuff;
     font-size: 15px;
     padding: 10px 24px;
     text-align: center;
@@ -187,7 +189,7 @@ a:visited {
 
 a:hover {
     background-color: purple;
-    color: black;
+    color: peachpuff;
     font-size: 80%;
     padding: 10px 24px;
     text-align: center;
@@ -199,7 +201,7 @@ a:hover {
 
 a:active {
     background-color: purple;
-    color: black;
+    color: peachpuff;
     font-size: 80%;
     padding: 10px 24px;
     text-align: center;
@@ -226,7 +228,31 @@ a:active {
 }
 
 input[type=button] {
-    font-family: serif Garamond;
+    font-family: Garamond, serif;
+
+}
+
+.submit1{
+    border: transparent;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    height: 80%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit1:hover {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    height: 80%;
+    border: 2px solid rebeccapurple;
+}
+
+input[type=submit] {
+    font-family: Garamond, serif;
 
 }
 
@@ -250,7 +276,4 @@ input[type=button] {
 
 .form-logo{
     display: inline-block;
-}
-a.link, link{
-    color: peachpuff;
 }

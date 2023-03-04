@@ -37,8 +37,8 @@ function boardBuilder(board) {
                 </section>
                 <div class="board-columns" data-board-id=${board.id} style="display: none">
                     <div class="columns-panel">
-                        <input class="add-column-button" data-board-id=${board.id} type="button" type="submit" value="Add column">
-                        <input class="add-card-button" data-board-id=${board.id} type="button" type="submit" value="Add card">
+                        <input class="add-column-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add column">
+                        <input class="add-card-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add card">
                     </div>
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>New</div>
@@ -68,7 +68,7 @@ function cardBuilder(cardId, cardTitle) {
 }
 
 function inputPanelBuilder(){
-    return `<div id="input-box"><input type="text" required><input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">
+    return `<div id="input-box"><input type="text" required><input class="save-data submit1" value="Save" type="submit" onClick="location.reload()">
             </div>`
 }
 function inputFieldBuilder(title){
@@ -76,7 +76,7 @@ function inputFieldBuilder(title){
 }
 
 function saveButtonBuilder(){
-    return `<input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">`
+    return `<input class="save-data submit1" value="Save" type="submit" onClick="location.reload()">`
 }
 //TODO
 function columnBuilder(columnTitle, boardId) {
