@@ -37,9 +37,11 @@ function boardBuilder(board) {
                 </section>
                 <div class="board-columns" data-board-id=${board.id} style="display: none">
                     <div class="columns-panel">
-                        <input class="add-column-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add column">
-                        <input class="add-card-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add card">
+                    <br>
+                        <input class="add-column-button submit1" data-board-id=${board.id} type="submit" value="Add column">
+                        <input class="add-card-button submit1" data-board-id=${board.id} type="submit" value="Add card">
                     </div>
+                    <div class="columns-in-boards">
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>New</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
@@ -59,6 +61,7 @@ function boardBuilder(board) {
                         <div class="board-column-title" data-board-id=${board.id}>Done</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
+                    </div>
                     </div>
                 </div>`;
 }
