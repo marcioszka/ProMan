@@ -2,7 +2,7 @@
     --border-radius: 3px;
     --status-1: #590000;
     --status-2: #594300;
-    --status-3: #525900;
+    --status-3: #495900;
     --status-4: #085900;
 }
 
@@ -43,6 +43,8 @@ body{
 }
 
 .board-column-title{
+    background: peachpuff;
+    border-radius: 8px;
     text-align: center;
     font-weight: bold;
     font-size: large;
@@ -106,7 +108,7 @@ section.board{
     margin: 13px;
 }
 
-.board-columns, .board-column, .columns-in-boards{
+.board-columns, .columns-in-boards{
     /*display: inline-flex;*/
     align-items: center;
     display: flex;
@@ -119,6 +121,9 @@ section.board{
     padding: 10px;
     flex: 1;
     max-width: 25%;
+    align-items: center;
+    /*display: flex;*/
+    flex-wrap: nowrap;
 }
 
 .board-column-content{
@@ -143,19 +148,19 @@ section.board{
     padding: 4px;
 }
 
-.board-column:nth-of-type(1) .card{
+div.board-column:nth-of-type(1) .card{
     background: var(--status-1);
 }
 
-.board-column:nth-of-type(2) .card{
+div.board-column:nth-of-type(2) .card{
     background: var(--status-2);
 }
 
-.board-column:nth-of-type(3) .card{
+div.board-column:nth-of-type(3) .card{
     background: var(--status-3);
 }
 
-.board-column:nth-of-type(4) .card{
+div.board-column:nth-of-type(4) .card{
     background: var(--status-4);
 }
 
@@ -172,20 +177,7 @@ section.board{
     padding-right: 16px;
 }
 
-a:link, link{
-    background-color: mediumpurple;
-    color: peachpuff;
-    font-size: 15px;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 8px;
-    border: 2px solid rebeccapurple;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-a:visited {
+a:link, a:visited {
     background-color: rebeccapurple;
     color: peachpuff;
     font-size: 15px;
@@ -284,12 +276,18 @@ strong{
     padding: 20px;
     text-align: center;
     width: fit-content;
+    font-family: Garamond, serif;
 }
 
 .form-header{
     margin: 0 0 10px 0;
+    font-family: Garamond, serif;
+    font-size: 130%;
+    font-weight: bold;
+    ;
 }
 
 .form-logo{
     display: inline-block;
+    font-family: Garamond, serif;
 }
