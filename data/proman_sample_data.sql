@@ -36,7 +36,7 @@ CREATE TABLE boards (
     title       VARCHAR(200)        NOT NULL,
     user_id     INTEGER
 );
-DROP TABLE cards;
+
 CREATE TABLE cards (
     id          SERIAL PRIMARY KEY  NOT NULL,
     board_id    INTEGER             NOT NULL,
