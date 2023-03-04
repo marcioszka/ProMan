@@ -26,6 +26,7 @@ export let boardsManager = {
             domManager.addEventListener(`.add-column-button[data-board-id="${board.id}"]`,
                 'click',
                 addColumn);
+            domManager.addEventListener(`.add-card-button[data-board-id="${board.id}"]`, 'click', addCard);
             let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
             for(let i=0; i<columnNames.length; i++){
                 const columnName = columnNames.item(i);
@@ -58,6 +59,28 @@ function renameColumn(clickEvent) {
     //newColumnNameField.remove();
     //clickEvent.target.style.display = "block";
     }
+
+function addCard(clickEvent){
+    clickEvent.stopPropagation();
+    const cardNameField = document.createElement('input');
+    cardNameField.setAttribute('placeholder', 'New card');
+    clickEvent.target.style.display = "none";
+    const boardId = parseInt(clickEvent.target.dataset.boardId);
+    clickEvent.target.insertAdjacentElement('afterend', cardNameField);
+    cardNameField.onblur = function(event, ){
+        const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
+        const cardName = cardNameField.value; //ok
+        //const user_id = dataHandler.  napisać query żeby dostać id usera po id boarda z tabeli boardy + route + api
+        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // nie działa
+        //const newCardBuilder = htmlFactory(htmlTemplates.card)(cardId, cardName);
+    }
+    // cardNameField.remove();
+    // clickEvent.target.style.display = "block";
+
+    // const
+    // console.log(cardName);
+
+}
 
 function handleKeyPress(keyEvent) {
     keyEvent.stopPropagation();
