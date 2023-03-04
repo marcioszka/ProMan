@@ -63,8 +63,8 @@ function boardBuilder(board) {
                 </div>`;
 }
 
-function cardBuilder(card) {
-    return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
+function cardBuilder(cardId, cardTitle) {
+    return `<div class="card" data-card-id="${cardId}">${cardTitle}</div>`;
 }
 
 function inputPanelBuilder(){
