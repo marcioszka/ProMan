@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <title>ProMan</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />#}
+{#    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">#}
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </head>
 <body>
     <a href="{{ url_for('index') }}">Return to main page</a><br>
-    <div class="form">
-    <img src="static/favicon/favicon-96x96.png" alt="ProMan" loading="eager">
-    <p>ProMan</p>
-    <p>Register to experience our best functionalities.</p>
-    <form class="form-block" action="{{ url_for('register') }}" method="POST">
+
+    <div class="form-block">
+        <form class="form" action="{{ url_for('register') }}" method="POST">
+            <div class="form-logo"><img src="static/favicon/favicon-96x96.png" alt="ProMan" loading="eager">
+            <p>ProMan</p></div>
+        <div class="form-header"><p>Register to experience our best functionalities.</p></div>
         <!--<label class="form__label" for="username">Enter your username:</label>-->
         <input type="text" id="username" name="username" placeholder="Username" required>
         <br><br>

@@ -234,3 +234,11 @@ a:active {
     text-align: center;
     width: fit-content;
 }
+
+.form-header{
+    margin: 0 0 10px 0;
+}
+
+.form-logo{
+    display: inline-block;
+}

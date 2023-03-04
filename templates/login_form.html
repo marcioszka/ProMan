@@ -8,8 +8,8 @@
 <body>
     <a href="{{ url_for('index') }}">Return to main page</a><br>
     <div class="form-block">
-    <div>Sign in</div>
     <form class="form" action="{{ url_for('login') }}" method="post">
+        <div class="form-header">Sign in</div>
         <label for="login" class="form__label">Username:</label>
         <input type="text" id="login" name="login" required>
         <br><br>
