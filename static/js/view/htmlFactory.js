@@ -33,11 +33,12 @@ function boardBuilder(board) {
                 <section class="board-header" data-board-id=${board.id}>
                     <button class="delete-board-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
-                    <button class="toggle-board-button" data-board-id="${board.id}" onclick="location.reload()">Show Cards</button>
+<!--                    <button class="toggle-board-button" data-board-id="${board.id}" onclick="location.reload()">Show Cards</button>-->
                 </section>
                 <div class="board-columns" data-board-id=${board.id} style="display: none">
                     <div class="columns-panel">
                         <input class="add-column-button" data-board-id=${board.id} type="button" type="submit" value="Add column">
+                        <input class="add-card-button" data-board-id=${board.id} type="button" type="submit" value="Add card">
                     </div>
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>New</div>
