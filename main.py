@@ -74,7 +74,7 @@ def add_column():
     column_title = content["title"]
     return queries.add_column(column_title)
 
-@app.route("/api/statuses/<int:status_id>/", methods=['PUT'])
+@app.route("/api/statuses/<int:status_id>", methods=['PUT'])
 @json_response
 def update_status(status_id):
     data = request.get_json(force=True)
