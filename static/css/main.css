@@ -160,3 +160,63 @@ section.board{
 .card-title{
     padding-right: 16px;
 }
+
+a:link {
+    background-color: grey;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+a:visited {
+    background-color: #008CBA;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+a:hover {
+    background-color: hotpink;
+    color: black;
+    font-size: 80%;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid deeppink;
+}
+
+a:active {
+    background-color: deeppink;
+    color: black;
+    font-size: 80%;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.button1{
+    border: transparent;
+    background-color: #008CBA;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: white;
+}
+
+.button1:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
