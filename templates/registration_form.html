@@ -12,7 +12,7 @@
     <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </head>
 <body>
-    <a href="{{ url_for('index') }}">Return to main page</a><br>
+    <a href="{{ url_for('index') }}" class="link">Return to main page</a><br>
 
     <div class="form-block">
         <form class="form" action="{{ url_for('register') }}" method="POST">

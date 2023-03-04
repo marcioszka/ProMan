@@ -17,11 +17,11 @@
     <body>
         <div class="user-panel">
             {% if session['logged'] %}
-                <a href="{{ url_for('logout') }}" id="logout">Sign out</a>
+                <a href="{{ url_for('logout') }}" id="logout" class="link">Sign out</a>
                 <input id="user-id" name='user-id' value='{{ session["id"] }}' hidden /> Welcome on your panel,<strong> {{ session['user'] }}</strong>
             {% else %}
-                <a href="{{ url_for('register') }}" id="registration">Sign up</a>
-                <a href="{{ url_for('login') }}" id="login">Sign in</a>
+                <a href="{{ url_for('register') }}" id="registration" class="link">Sign up</a>
+                <a href="{{ url_for('login') }}" id="login" class="link">Sign in</a>
                 <input id="user-id" name='user-id' value='false' hidden />
             {% endif %}
             <input class="button1" type="button" id="refresh-button" onclick="location.reload()" value="Refresh page">

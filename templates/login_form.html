@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    <a href="{{ url_for('index') }}">Return to main page</a><br>
+    <a href="{{ url_for('index') }}" class="link">Return to main page</a><br>
     <div class="form-block">
     <form class="form" action="{{ url_for('login') }}" method="post">
         <div class="form-header">Sign in</div>
