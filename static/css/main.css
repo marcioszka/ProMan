@@ -162,7 +162,7 @@ section.board{
 }
 
 a:link {
-    background-color: grey;
+    background-color: mediumpurple;
     color: black;
     font-size: 15px;
     padding: 10px 24px;
@@ -173,7 +173,7 @@ a:link {
 }
 
 a:visited {
-    background-color: #008CBA;
+    background-color: rebeccapurple;
     color: black;
     font-size: 15px;
     padding: 10px 24px;
@@ -184,7 +184,7 @@ a:visited {
 }
 
 a:hover {
-    background-color: hotpink;
+    background-color: purple;
     color: black;
     font-size: 80%;
     padding: 10px 24px;
@@ -192,11 +192,11 @@ a:hover {
     text-decoration: underline;
     display: inline-block;
     border-radius: 8px;
-    border: 2px solid deeppink;
+    border: 2px solid purple;
 }
 
 a:active {
-    background-color: deeppink;
+    background-color: purple;
     color: black;
     font-size: 80%;
     padding: 10px 24px;
@@ -208,17 +208,17 @@ a:active {
 
 .button1{
     border: transparent;
-    background-color: #008CBA;
+    background-color: rebeccapurple;
     font-size: 15px;
     padding: 10px 24px;
     border-radius: 8px;
-    color: white;
+    color: peachpuff;
 }
 
 .button1:hover {
-  background-color: white;
+  background-color: peachpuff;
   color: black;
-  border: 2px solid #008CBA;
+  border: 2px solid rebeccapurple;
 }
 
 .form-block{
