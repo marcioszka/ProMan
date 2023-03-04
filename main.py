@@ -133,6 +133,37 @@ def logout():
     return redirect('/')
 
 
+@app.route("/api/boards/<int:board_id>/cards/")
+@json_response
+def get_cards_for_boards(board_id: int):
+    """
+    All cards that belongs to a board
+    :param board_id: id of the parent board
+    """
+    return queries.get_cards_for_board(board_id)
+
+
+@app.route("/api/cards/")
+@json_response
+def get_all_cards():
+
+    return queries.get_all_cards()
+
+
+@app.route("/api/cards/delete_card/<int:card_id>", methods=['GET', 'DELETE'])
+@json_response
+def delete_card(card_id: int):
+    return queries.delete_card(card_id)
+
+
+@app.route("/api/cards/new_card", methods=['GET', 'POST'])
+@json_response
+def create__card():
+    data = {'title': "JESIENIARA", 'board_id': 3, 'card_order': 2}
+    status_id = 2
+    return queries.create_card(data, status_id)
+
+
 def main():
     app.run(debug=True)
 

@@ -37,6 +37,15 @@ export let dataHandler = {
     },
     renameColumn: async function (columnTitle, statusId){
         return await apiPut(`/api/statuses/${statusId}`, {body: {"title": columnTitle}})
+    },
+    addColumn: async function (columnTitle){
+        return await apiPost(`/api/boards/new_column`, {body:{"title": columnTitle}})
+    },
+    deleteCard: async function (cardId) {
+        return await apiDelete(`/api/cards/delete_card/${cardId}`, {cardId:cardId});
+    },
+    renameCard: async function (cardTitle, cardId){
+        return await apiPut(`/api/cards/rename_card/${cardId}`, {body: {"id": cardId, "title": cardTitle}})
     }
 };
 
