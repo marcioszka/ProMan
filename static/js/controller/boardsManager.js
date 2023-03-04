@@ -70,12 +70,13 @@ function addCard(clickEvent){
     cardNameField.onblur = function(event, ){
         const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
         const cardName = cardNameField.value; //ok
-        //const user_id = dataHandler.  napisać query żeby dostać id usera po id boarda z tabeli boardy + route + api
-        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // nie działa
-        //const newCardBuilder = htmlFactory(htmlTemplates.card)(cardId, cardName);
+        cardNameField.remove();
+        clickEvent.target.style.display = "block";
+        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // uzupełnić o userId
+        const newCard = htmlFactory(htmlTemplates.card)(cardId, cardName);
+        domManager.addChild(`.board-column-1[data-board-id="${boardId}"]`, newCard);
     }
-    // cardNameField.remove();
-    // clickEvent.target.style.display = "block";
+
 
 }
 

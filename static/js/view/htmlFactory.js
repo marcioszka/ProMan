@@ -40,7 +40,7 @@ function boardBuilder(board) {
                         <input class="add-column-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add column">
                         <input class="add-card-button submit1" data-board-id=${board.id} type="button" type="submit" value="Add card">
                     </div>
-                    <div class="board-column" data-board-id=${board.id}>
+                    <div class="board-column-1" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>New</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
