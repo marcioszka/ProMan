@@ -100,6 +100,8 @@ section.board{
 }
 
 .board-column{
+    display: inline-block;
+    position: relative;
     padding: 10px;
     flex: 1;
     max-width: 25%;
