@@ -36,7 +36,7 @@ CREATE TABLE boards (
     title       VARCHAR(200)        NOT NULL,
     user_id     INTEGER
 );
-
+DROP TABLE cards;
 CREATE TABLE cards (
     id          SERIAL PRIMARY KEY  NOT NULL,
     board_id    INTEGER             NOT NULL,
@@ -98,3 +98,6 @@ ALTER TABLE ONLY boards
 
 ALTER TABLE ONLY statuses
     ADD CONSTRAINT no_duplicates UNIQUE (title);
+
+ALTER TABLE ONLY cards
+    ADD CONSTRAINT fk_cards_user_id FOREIGN KEY (user_id) REFERENCES users(id);
