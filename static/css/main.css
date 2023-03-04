@@ -12,6 +12,21 @@ body{
     font-family: sans-serif;
 }
 
+#table{
+    background: transparent;
+    position: center;
+}
+
+#table-body{
+    background: transparent;
+    position: center;
+}
+
+.board-columns-body{
+    background: transparent;
+    position: center;
+}
+
 #refresh-button{
     position: fixed;
     right: 1%;
@@ -28,6 +43,8 @@ body{
 
 .user-panel{
     margin-bottom: 1%;
+    /*position: fixed;*/
+    /*width: 100%;*/
 }
 
 h1, .board-title, .board-column-title{
@@ -97,16 +114,19 @@ section.board{
     display: inline-flex;
     /*display: flex;*/
     flex-wrap: nowrap;
+    text-align: center;
 }
 
 .board-column{
     padding: 10px;
     flex: 1;
     max-width: 25%;
+    text-align: center;
 }
 
 .board-column-content{
     min-height: 49px;
+    text-align: center;
 }/*pojemnik z kartami*/
 
 .board-column-content:empty{
@@ -130,19 +150,19 @@ section.board{
     padding: 4px;
 }
 
-.board-column:nth-of-type(1) .card{
+.board-column:nth-of-type(1) .card, #table-body-new{
     background: var(--status-1);
 }
 
-.board-column:nth-of-type(2) .card{
+.board-column:nth-of-type(2) .card, #table-body-in-progress{
     background: var(--status-2);
 }
 
-.board-column:nth-of-type(3) .card{
+.board-column:nth-of-type(3) .card, #table-body-new-testing{
     background: var(--status-3);
 }
 
-.board-column:nth-of-type(4) .card{
+.board-column:nth-of-type(4) .card, #table-body-new-done{
     background: var(--status-4);
 }
 
@@ -157,4 +177,65 @@ section.board{
 
 .card-title{
     padding-right: 16px;
+}
+
+
+a:link {
+    background-color: grey;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+a:visited {
+    background-color: #008CBA;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+a:hover {
+    background-color: hotpink;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid deeppink;
+}
+
+a:active {
+    background-color: deeppink;
+    color: black;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.button1{
+    border: transparent;
+    background-color: #008CBA;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: white;
+}
+
+.button1:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
 }

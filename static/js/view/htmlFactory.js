@@ -35,30 +35,46 @@ function boardBuilder(board) {
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
                     <button class="toggle-board-button" data-board-id="${board.id}" onclick="location.reload()">Show Cards</button>
                 </section>
-                <div class="board-columns" data-board-id=${board.id} style="display: none">
+                <section class="board-columns" data-board-id=${board.id} style="display: none">
                     <div class="columns-panel">
-                        <input class="add-column-button" data-board-id=${board.id} type="button" type="submit" value="Add column">
+                        <br><input class="add-column-button" data-board-id=${board.id} type="button" type="submit" value="Add column">
                     </div>
+                    <br><br>
+                    <table id="table">
+                    <tbody id="table-body">
+                    <tr>
+                    <td id="table-body-new">
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>New</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
+                    </td>
+                    <td id="table-body-in-progress">
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>In progress</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
+                    </td>
+                    <td id="table-body-testing">
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>Testing</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
+                    </td>
+                    <td id="table-body-done">
                     <div class="board-column" data-board-id=${board.id}>
                         <div class="board-column-title" data-board-id=${board.id}>Done</div>
                         <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                </section>
                 </div>`;
 }
 
@@ -67,7 +83,7 @@ function cardBuilder(card) {
 }
 
 function inputPanelBuilder(){
-    return `<div id="input-box"><input type="text" required><input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">
+    return `<div id="input-box"><input type="text" required><input class="save-data" value="Save" type="submit" onClick="location.reload()">
             </div>`
 }
 function inputFieldBuilder(title){
@@ -75,7 +91,7 @@ function inputFieldBuilder(title){
 }
 
 function saveButtonBuilder(){
-    return `<input type="button" class="save-data" value="Save" type="submit" onClick="location.reload()">`
+    return `<input class="save-data" value="Save" type="submit" onClick="location.reload()">`
 }
 //TODO
 function columnBuilder(columnTitle, boardId) {
