@@ -77,9 +77,6 @@ function addCard(clickEvent){
     // cardNameField.remove();
     // clickEvent.target.style.display = "block";
 
-    // const
-    // console.log(cardName);
-
 }
 
 function handleKeyPress(keyEvent) {
