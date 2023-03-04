@@ -168,19 +168,19 @@ def create_card(data, status_id):
     )
 
 
-def update_card_status(card_id, data):
-    data_manager.execute_update(
-        """
-        INSERT INTO statuses (id, title) 
-        VALUES (id = %(status_id)s, title = %(title)s);
-        UPDATE cards
-        SET status_id = %(status_id)s, title = %(title)s
-        WHERE  id = %(card_id)s
-        """
-        , {'title': data['title'],
-           'status_id': data['status_id'],
-           'card_id': card_id}
-    )
+# def update_card_status(card_id, data):
+#     data_manager.execute_update(
+#         """
+#         INSERT INTO statuses (id, title)
+#         VALUES (id = %(status_id)s, title = %(title)s);
+#         UPDATE cards
+#         SET status_id = %(status_id)s, title = %(title)s
+#         WHERE  id = %(card_id)s
+#         """
+#         , {'title': data['title'],
+#            'status_id': data['status_id'],
+#            'card_id': card_id}
+#     )
 
 
 # def create_private_card(board_id, status_id, title, card_order, user_id):

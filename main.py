@@ -146,11 +146,11 @@ def create__card():
     return queries.create_card(data, status_id)
 
 
-@app.route("/api/cards/rename_card/<card_id>", methods=['GET', 'PUT'])
-@json_response
-def rename_card(card_id: int):
-    data = {'title': "JESIENIARA", 'board_id': 1, 'card_order': 2, 'status_id': 5}
-    return queries.update_card_status(card_id, data)
+# @app.route("/api/cards/rename_card/<card_id>", methods=['GET', 'PUT'])
+# @json_response
+# def rename_card(card_id: int):
+#     data = {'title': "JESIENIARA", 'board_id': 1, 'card_order': 2, 'status_id': 5}
+#     return queries.update_card_status(card_id, data)
 
 
 def main():
