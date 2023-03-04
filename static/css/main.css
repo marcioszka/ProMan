@@ -220,3 +220,17 @@ a:active {
   color: black;
   border: 2px solid #008CBA;
 }
+
+.form-block{
+    /*display: inline-block;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: dashed 2px deeppink;
+    border-radius: 1px;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    width: fit-content;
+}
