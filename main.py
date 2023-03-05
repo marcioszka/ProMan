@@ -82,6 +82,7 @@ def update_status(status_id):
     column_title = content["title"]
     return queries.get_status_id(column_title)
 
+
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response
 def get_cards_for_board(board_id: int):
@@ -89,7 +90,21 @@ def get_cards_for_board(board_id: int):
     All cards that belongs to a board
     :param board_id: id of the parent board
     """
+    # data = request.get_json(force=True)
+    # content = data["body"]
+    # board_id = content["board_id"]
     return queries.get_cards_for_board(board_id)
+
+
+# @app.route("/api/boards/<int:board_id>/cards/")
+# @json_response
+# def get_cards_for_boards(board_id: int):
+#     """
+#     All cards that belongs to a board
+#     :param board_id: id of the parent board
+#     """
+#
+#     return queries.get_cards_for_board(board_id)
 
 
 @app.route('/api/boards/<int:board_id>/cards/new_card', methods=['POST'])
@@ -146,14 +161,7 @@ def logout():
     return redirect('/')
 
 
-@app.route("/api/boards/<int:board_id>/cards/")
-@json_response
-def get_cards_for_boards(board_id: int):
-    """
-    All cards that belongs to a board
-    :param board_id: id of the parent board
-    """
-    return queries.get_cards_for_board(board_id)
+
 
 
 @app.route("/api/cards/")
