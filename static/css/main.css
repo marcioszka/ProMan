@@ -239,6 +239,24 @@ a:active {
   border: 2px solid rebeccapurple;
 }
 
+.button2{
+    margin: 5px;
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+  background-color: peachpuff;
+  color: rebeccapurple;
+  border: 2px solid rebeccapurple;
+}
+
 input[type=button] {
     font-family: Garamond, serif;
 

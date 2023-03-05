@@ -12,7 +12,7 @@ export let boardsManager = {
             domManager.addChild("#root", content);
             domManager.addEventListener(
                 `.toggle-board-button[data-board-id="${board.id}"]`,
-                "click",
+                "dblclick",
                 showHideButtonHandler);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
