@@ -10,10 +10,10 @@ export let boardsManager = {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
-            // domManager.addEventListener(
-            //     `.toggle-board-button[data-board-id="${board.id}"]`,
-            //     "click",
-            //     showHideButtonHandler);
+            domManager.addEventListener(
+                `.toggle-board-button[data-board-id="${board.id}"]`,
+                "dblclick",
+                showHideButtonHandler);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);
@@ -30,7 +30,7 @@ export let boardsManager = {
             let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
             for(let i=0; i<columnNames.length; i++){
                 const columnName = columnNames.item(i);
-                console.log(columnName);
+                console.log(columnName); //necessary?
                 //columnName.addEventListener('click', renameColumn);
             }
         }

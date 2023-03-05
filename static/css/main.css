@@ -123,7 +123,7 @@ section.board{
     flex-wrap: nowrap;
 }
 
-.board-column{
+.board-column, .board-column-1{
     display: inline-block;
     position: relative;
     padding: 10px;
@@ -156,7 +156,7 @@ section.board{
     padding: 4px;
 }
 
-div.board-column:nth-of-type(1) .card{
+div.board-column-1:nth-of-type(1) .card{
     background: var(--status-1);
 }
 
