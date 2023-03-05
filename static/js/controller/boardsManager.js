@@ -10,10 +10,10 @@ export let boardsManager = {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
-            domManager.addEventListener(
-                `.toggle-board-button[data-board-id="${board.id}"]`,
-                "dblclick",
-                showHideButtonHandler);
+            // domManager.addEventListener(
+            //     `.toggle-board-button[data-board-id="${board.id}"]`,
+            //     "click",
+            //     showHideButtonHandler);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);
@@ -30,7 +30,8 @@ export let boardsManager = {
             let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
             for(let i=0; i<columnNames.length; i++){
                 const columnName = columnNames.item(i);
-                columnName.addEventListener('click', renameColumn);
+                console.log(columnName);
+                //columnName.addEventListener('click', renameColumn);
             }
         }
     },
@@ -64,18 +65,17 @@ function addCard(clickEvent){
     const cardNameField = document.createElement('input');
     cardNameField.setAttribute('placeholder', 'New card');
     clickEvent.target.style.display = "none";
-    const boardId = parseInt(clickEvent.target.dataset.boardId);
+    //const boardId = parseInt(clickEvent.target.dataset.boardId);
     clickEvent.target.insertAdjacentElement('afterend', cardNameField);
     cardNameField.onblur = function(event, ){
         const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
         const cardName = cardNameField.value; //ok
-        //const user_id = dataHandler.  napisać query żeby dostać id usera po id boarda z tabeli boardy + route + api
-        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // nie działa
-        //const newCardBuilder = htmlFactory(htmlTemplates.card)(cardId, cardName);
+        cardNameField.remove();
+        clickEvent.target.style.display = "block";
+        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // uzupełnić o userId
+        const newCard = htmlFactory(htmlTemplates.card)(cardId, cardName);
+        domManager.addChild(`.board-column-1[data-board-id="${boardId}"]`, newCard);
     }
-    // cardNameField.remove();
-    // clickEvent.target.style.display = "block";
-
 }
 
 function handleKeyPress(keyEvent) {

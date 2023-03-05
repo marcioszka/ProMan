@@ -98,3 +98,6 @@ ALTER TABLE ONLY boards
 
 ALTER TABLE ONLY statuses
     ADD CONSTRAINT no_duplicates UNIQUE (title);
+
+ALTER TABLE ONLY cards
+    ADD CONSTRAINT fk_cards_user_id FOREIGN KEY (user_id) REFERENCES users(id);

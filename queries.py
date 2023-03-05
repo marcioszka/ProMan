@@ -213,9 +213,16 @@ def create_card(data, status_id):
          'card_order': data['card_order']}
     )
 
-def add_card(board_id, status_id, title, user_id):
+# def add_card(board_id, status_id, title, user_id):
+#     return data_manager.execute_select(
+#         """
+#         INSERT INTO cards (board_id, status_id, title, card_order, user_id) VALUES (%(board_id)s, %(status_id)s, %(title)s, 1, %(user_id)s)
+#         RETURNING id""", {'title': title, 'board_id': board_id, 'user_id': user_id, 'status_id': status_id}, fetchall=False
+#     )
+
+def add_card(board_id, status_id, title):
     return data_manager.execute_select(
         """
-        INSERT INTO cards (board_id, status_id, title, card_order, user_id) VALUES (%(board_id)s, %(status_id)s, %(title)s, 1, %(user_id)s)
-        RETURNING id""", {'title': title, 'board_id': board_id, 'user_id': user_id, 'status_id': status_id}, fetchall=False
+        INSERT INTO cards (board_id, status_id, title, card_order) VALUES (%(board_id)s, %(status_id)s, %(title)s, 1)
+        RETURNING id""", {'title': title, 'board_id': board_id, 'status_id': status_id}, fetchall=False
     )

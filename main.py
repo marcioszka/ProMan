@@ -115,8 +115,9 @@ def add_card(board_id):
     card_title = content["title"]
     status_id = content["status_id"]
     board_id = content["board_id"]
-    user_id = session.get('id')
-    result = queries.add_card(board_id, status_id, card_title, user_id)
+    # user_id = session.get('id')
+    # result = queries.add_card(board_id, status_id, card_title, user_id)
+    result = queries.add_card(board_id, status_id, card_title)
     return result["id"]
 
 
