@@ -30,7 +30,7 @@ export let boardsManager = {
             let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
             for(let i=0; i<columnNames.length; i++){
                 const columnName = columnNames.item(i);
-                console.log(columnName); //necessary?
+                // console.log(columnName); //necessary? nope
                 //columnName.addEventListener('click', renameColumn);
             }
         }
@@ -148,7 +148,8 @@ function addColumn(clickEvent) {
         const columnBuilder = htmlFactory(htmlTemplates.column);
         const boardId = parseInt(clickEvent.target.dataset.boardId);
         const content = columnBuilder(newColumnName, boardId);
-        domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
+        // domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
+        domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();
     }
 }

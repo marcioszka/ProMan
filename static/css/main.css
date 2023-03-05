@@ -34,10 +34,10 @@ body{
 
 
 .board-title{
-    font-weight: bold;
+    font-weight: bolder;
     margin: 13px;
     display: inline-block;
-    font-size: large;
+    font-size: 140%;
     font-family: Garamond, serif;
     text-align: center;
 }
@@ -98,17 +98,21 @@ section.board{
 }
 /*.board-add - add card button*/
 
-.delete-column-button{
+.delete-column-button, .rename-column-button{
     width: 2px;
     background: transparent;
+    color: black;
+    font-weight: bold;
 }
 
 .delete-card-button{
     width: 2px;
     background: transparent;
     float: right;
+    padding-bottom: 2px;
     margin-right: 10px;
     margin-bottom: 2px;
+    margin-top: 0;
 }
 
 .toggle-board-button {
@@ -158,18 +162,22 @@ section.board{
 
 div.board-column-1:nth-of-type(1) .card{
     background: var(--status-1);
+    text-align: center;
 }
 
 div.board-column:nth-of-type(2) .card{
     background: var(--status-2);
+    text-align: center;
 }
 
 div.board-column:nth-of-type(3) .card{
     background: var(--status-3);
+    text-align: center;
 }
 
 div.board-column:nth-of-type(4) .card{
     background: var(--status-4);
+    text-align: center;
 }
 
 .card-remove{
