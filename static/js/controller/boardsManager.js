@@ -31,7 +31,7 @@ export let boardsManager = {
             for(let i=0; i<columnNames.length; i++){
                 const columnName = columnNames.item(i);
                 console.log(columnName);
-                columnName.addEventListener('click', renameColumn);
+                //columnName.addEventListener('click', renameColumn);
             }
         }
     },
