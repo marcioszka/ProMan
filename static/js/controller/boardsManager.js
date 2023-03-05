@@ -65,7 +65,7 @@ function addCard(clickEvent){
     const cardNameField = document.createElement('input');
     cardNameField.setAttribute('placeholder', 'New card');
     clickEvent.target.style.display = "none";
-    const boardId = parseInt(clickEvent.target.dataset.boardId);
+    //const boardId = parseInt(clickEvent.target.dataset.boardId);
     clickEvent.target.insertAdjacentElement('afterend', cardNameField);
     cardNameField.onblur = function(event, ){
         const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
@@ -76,8 +76,6 @@ function addCard(clickEvent){
         const newCard = htmlFactory(htmlTemplates.card)(cardId, cardName);
         domManager.addChild(`.board-column-1[data-board-id="${boardId}"]`, newCard);
     }
-
-
 }
 
 function handleKeyPress(keyEvent) {
