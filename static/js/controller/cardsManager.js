@@ -10,7 +10,7 @@ export let cardsManager = {
             const content = cardBuilder(card);
             domManager.addChild(`.board-column-cards[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(
-                `.card[data-card-id="${card.id}"]`,
+                `.delete-card-button[data-card-id="${card.id}"]`,
                 "click",
                 deleteButtonHandler
             );
@@ -19,6 +19,6 @@ export let cardsManager = {
 };
 
 function deleteButtonHandler(clickEvent) {
-    const cardId = clickEvent.target.dataset.boardId;
+    const cardId = clickEvent.target.dataset.cardId;
     dataHandler.deleteCard(cardId);
 }

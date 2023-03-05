@@ -103,6 +103,14 @@ section.board{
     background: transparent;
 }
 
+.delete-card-button{
+    width: 2px;
+    background: transparent;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
 .toggle-board-button {
     float: right;
     margin: 13px;

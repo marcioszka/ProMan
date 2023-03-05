@@ -6,12 +6,13 @@ export let dataHandler = {
         // the board is retrieved and then the callback function is called with the board
         //return apiGet(`/api/boards/${boardId}`)
     },
-    getStatuses: async function () {
+    getStatuses: async function (boardId) {
         // the statuses are retrieved and then the callback function is called with the statuses
-        return apiGet("/api/statuses")
+        return apiGet(`/api/${boardId}/get-statuses`)
     },
     getStatus: async function (statusId) {
         // the status is retrieved and then the callback function is called with the status
+        return apiGet(`/api/get-statuses/${statusId}`)
     },
     getCardsByBoardId: async function (boardId) {
         return await apiGet(`/api/boards/${boardId}/cards/`);

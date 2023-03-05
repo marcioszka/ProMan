@@ -160,10 +160,6 @@ def logout():
     session.clear()
     return redirect('/')
 
-
-
-
-
 @app.route("/api/cards/")
 @json_response
 def get_all_cards():
@@ -177,12 +173,13 @@ def delete_card(card_id: int):
     return queries.delete_card(card_id)
 
 
-@app.route("/api/cards/new_card", methods=['GET', 'POST'])
+@app.route("/api/<int:board_id>/get-statuses", methods=['GET'])
 @json_response
-def create__card():
-    data = {'title': "JESIENIARA", 'board_id': 3, 'card_order': 2}
-    status_id = 2
-    return queries.create_card(data, status_id)
+def get_card_status(board_id):
+    data = request.get_json(force=True)
+    content = data['body']
+    board_id = content['board_id']
+    return queries.get_board_statuses(board_id)
 
 
 def main():

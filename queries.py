@@ -7,15 +7,28 @@ def get_card_status(status_id):
     :param status_id:
     :return: str
     """
-    status = data_manager.execute_select(
+    return data_manager.execute_select(
         """
-        SELECT * FROM statuses s
-        WHERE s.id = %(status_id)s
+        SELECT * FROM statuses
+        WHERE id = %(status_id)s
         ;
         """
-        , {"status_id": status_id})
+        , {"status_id": status_id}
+    )
 
-    return status
+
+def get_board_statuses(board_id):
+    return data_manager.execute_select(
+        """
+        SELECT statuses.id, statuses.title 
+        FROM statuses
+        JOIN cards c on statuses.id = c.status_id
+        JOIN boards b on b.id = c.board_id
+        WHERE b.id = ${board_id}s
+        ;
+        """
+        , {"board_id": board_id}
+    )
 
 
 def get_board(title):
@@ -174,20 +187,6 @@ def get_all_cards():
     )
 
 
-# def get_card_status(status_id):
-#     """
-#     Find the first status matching the given id
-#     :param status_id:
-#     :return: str
-#     """
-#     return data_manager.execute_select(
-#         """
-#         SELECT * FROM statuses
-#         WHERE statuses.id = %(status_id)s
-#         ;
-#         """
-#         , {"status_id": status_id}
-#     )
 
 
 def delete_card(card_id):
