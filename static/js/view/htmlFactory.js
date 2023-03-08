@@ -43,23 +43,19 @@ function boardBuilder(board) {
                     </div>
                 <div class="columns-in-boards" data-board-id=${board.id}>
                     <div class="board-column-1" data-board-id=${board.id}>
-                        <div class="board-column-title" data-board-id=${board.id}>New
-                        <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button></div>
+                        <div class="board-column-title" data-board-id=${board.id}>New</div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id}>
-                        <div class="board-column-title" data-board-id=${board.id}>In progress
-                        <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button></div>
+                        <div class="board-column-title" data-board-id=${board.id}>In progress</div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id}>
-                        <div class="board-column-title" data-board-id=${board.id}>Testing
-                        <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button></div>
+                        <div class="board-column-title" data-board-id=${board.id}>Testing</div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id}>
-                        <div class="board-column-title" data-board-id=${board.id}>Done
-                        <button class="delete-column-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button></div>
+                        <div class="board-column-title" data-board-id=${board.id}>Done</div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
                     </div>
