@@ -81,13 +81,13 @@ function addCard(clickEvent){
 function handleKeyPress(keyEvent) {
     keyEvent.stopPropagation();
     const newName = keyEvent.target.value;
-    if(keyEvent.key == 'Enter' && newName != "")
+    if(keyEvent.key === 'Enter' && newName != "")
     {
         const columnId = 19;    //TODO
         dataHandler.renameColumn(newName, columnId);
     }
-    else if (keyEvent.key == 'Escape'){
-        return;
+    else if (keyEvent.key === 'Escape'){
+
     }
 }
 
@@ -123,8 +123,10 @@ function toggleHideShowBoardColumns(clickEvent) {
     const hideShowToggler = clickEvent.target;
     const hideShow = hideShowToggler.nextElementSibling;
     const isHidden = hideShow.style.display === 'none';
+    const boardId = clickEvent.target.dataset.boardId;
     if (isHidden) {
         hideShow.style.display = 'block'
+        cardsManager.loadColumns(boardId)
     } else {
         hideShow.style.display = 'none'
     };

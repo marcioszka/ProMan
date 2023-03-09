@@ -8,7 +8,7 @@ export let dataHandler = {
     },
     getStatuses: async function (boardId) {
         // the statuses are retrieved and then the callback function is called with the statuses
-        return apiGet(`/api/${boardId}/get-statuses`)
+        return apiGet(`/api/get-statuses/${boardId}`)
     },
     getStatus: async function (statusId) {
         // the status is retrieved and then the callback function is called with the status
@@ -43,6 +43,9 @@ export let dataHandler = {
     },
     addColumn: async function (columnTitle){
         return await apiPost(`/api/boards/new_column`, {body:{"title": columnTitle}})
+    },
+    deleteColumn: async function (columnId){
+        return await apiDelete(`/api/statuses/${columnId}`, { body: {"columnId": columnId }})
     },
     deleteCard: async function (cardId) {
         return await apiDelete(`/api/cards/delete_card/${cardId}`, {cardId:cardId});

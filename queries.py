@@ -24,7 +24,7 @@ def get_board_statuses(board_id):
         FROM statuses
         JOIN cards c on statuses.id = c.status_id
         JOIN boards b on b.id = c.board_id
-        WHERE b.id = ${board_id}s
+        WHERE b.id = board_id
         ;
         """
         , {"board_id": board_id}
@@ -155,6 +155,18 @@ def add_column(title):
             VALUES (%(title)s);
             """,
         {'title': title}
+    )
+
+
+def delete_column(id):
+    data_manager.execute_update(
+        """
+        DELETE 
+        FROM statuses
+        WHERE id = %(id)s
+        ;
+        """,
+        {'id': id}
     )
 
 
