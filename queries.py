@@ -116,6 +116,14 @@ def get_user_id(username):
     return user_data['id']
 
 
+def get_users():
+    return data_manager.execute_select(
+        """
+        SELECT username
+        FROM users
+        ;"""
+    )
+
 def get_board(id):
     return data_manager.execute_select(
         """
