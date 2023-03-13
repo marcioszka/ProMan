@@ -20,7 +20,7 @@ def get_card_status(status_id):
 def get_board_statuses(board_id):
     return data_manager.execute_select(
         """
-        SELECT statuses.id, statuses.title, statuses.board_id 
+        SELECT statuses.id, statuses.title, statuses.board_id
         FROM statuses
         WHERE board_id=%(board_id)s
         ;
@@ -28,9 +28,7 @@ def get_board_statuses(board_id):
         , {"board_id": board_id}
     )
 
-#         JOIN cards c on statuses.id = c.status_id
-#         JOIN boards b on b.id = c.board_id
-#         WHERE b.id = ${board_id}s
+
 def get_board(title):
     return data_manager.execute_select(
         """
@@ -148,13 +146,13 @@ def delete_cards(board_id):
     )
 
 
-def add_column(title):
+def add_column(title, board_id):
     data_manager.execute_update(
         """
-            INSERT INTO statuses (title)
-            VALUES (%(title)s);
+            INSERT INTO statuses (title, board_id)
+            VALUES (%(title)s, %(board_id)s);
             """,
-        {'title': title}
+        {'title': title, 'board_id': board_id}
     )
 
 
@@ -200,6 +198,15 @@ def delete_card(card_id):
         {'card_id': card_id}
     )
 
+def delete_statuses(board_id):
+    return data_manager.execute_update(
+        """
+        DELETE
+        FROM statuses
+        WHERE board_id = %(board_id)s
+        """,
+        {'board_id': board_id}
+    )
 
 def create_card(data, status_id):
     return data_manager.execute_update(

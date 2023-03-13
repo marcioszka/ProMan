@@ -63,6 +63,7 @@ def delete_board(board_id: int):
     Deleting all boards.
     """
     queries.delete_cards(board_id)
+    queries.delete_statuses(board_id)
     queries.delete_board(board_id)
     return request.get_json()
 
@@ -72,7 +73,8 @@ def add_column():
     data = request.get_json(force=True)
     content = data["body"]
     column_title = content["title"]
-    return queries.add_column(column_title)
+    board_id = content["board_id"]
+    return queries.add_column(column_title, board_id)
 
 @app.route("/api/statuses/<int:status_id>", methods=['PUT'])
 @json_response
@@ -173,14 +175,6 @@ def get_all_cards():
 def delete_card(card_id: int):
     return queries.delete_card(card_id)
 
-
-# @app.route("/api/<int:board_id>/get-statuses", methods=['GET'])
-# @json_response
-# def get_card_status(board_id):
-#     data = request.get_json(force=True)
-#     content = data['body']
-#     board_id = content['board_id']
-#     return queries.get_board_statuses(board_id)
 
 @app.route("/api/boards/<int:board_id>/get-statuses", methods=['GET'])
 @json_response
