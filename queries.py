@@ -167,6 +167,17 @@ def update_board_name(id, title):
     )
 
 
+def update_column_name(id, title):
+    data_manager.execute_update(
+        """
+            UPDATE statuses
+            SET title = %(title)s
+            WHERE id = %(id)s;
+                """,
+        {'id': id, 'title': title}
+    )
+
+
 def get_all_cards():
     return data_manager.execute_select(
         """

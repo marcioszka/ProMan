@@ -189,6 +189,17 @@ def get_columns(board_id):
     return queries.get_board_statuses(board_id)
 
 
+@app.route("/api/statuses/new_name", methods=['GET', 'PUT'])
+@json_response
+def rename_column():
+    data = request.get_json(force=True)
+    content = data["body"]
+    title = content["title"]
+    id = content["id"]
+    print(id, title)
+    return queries.update_column_name(id, title)
+
+
 def main():
     app.run(debug=True)
 
