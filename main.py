@@ -132,9 +132,17 @@ def add_card(board_id):
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    users_data = queries.get_users()
+    users = [user_data["username"] for user_data in users_data]
+    print(users)
     if request.method == 'POST':
         username = request.form.get('username')
+        if username in users:
+            return render_template("registration_form.html", message_username="Username already in use")
         password_to_hash = request.form.get('password')
+        password_repeated = request.form.get('password2')
+        if password_repeated != password_to_hash:
+            return render_template("registration_form.html", message_password="Passwords don't match. Try again.")
         password = hash_password(password_to_hash)
         new_user = queries.add_user(username, password)
         if new_user:
