@@ -101,3 +101,9 @@ ALTER TABLE ONLY statuses
 
 ALTER TABLE ONLY cards
     ADD CONSTRAINT fk_cards_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+ALTER TABLE statuses ADD COLUMN board_id INTEGER;
+
+ALTER TABLE ONLY statuses
+    ADD CONSTRAINT fk_boards_board_id FOREIGN KEY (board_id) REFERENCES boards(id);
+
