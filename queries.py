@@ -167,15 +167,6 @@ def update_board_name(id, title):
     )
 
 
-def get_status_id(title):
-    return data_manager.execute_select(
-        """
-         SELECT id 
-         FROM statuses 
-         WHERE title=%(title)s
-         """, {'title': title}, fetchall=False)
-
-
 def get_all_cards():
     return data_manager.execute_select(
         """
@@ -184,8 +175,27 @@ def get_all_cards():
         """
     )
 
+def delete_status(title, board_id):
+    return data_manager.execute_update(
+        """
+        DELETE
+        FROM statuses
+        WHERE title = %(title)s AND board_id=%(board_id)s
+        """,
+        {'title': title, 'board_id': board_id}
+    )
 
 
+def delete_cards_by_status(status_id):
+    return data_manager.execute_update(
+        """
+        DELETE
+        FROM cards
+        WHERE status_id = %(status_id)s
+        returning id
+        """,
+        {'status_id': status_id}
+    )
 
 def delete_card(card_id):
     return data_manager.execute_update(

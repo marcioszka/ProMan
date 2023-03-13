@@ -69,7 +69,7 @@ function cardBuilder(card) {
 }
 
 function inputPanelBuilder(){
-    return `<div id="input-box"><input type="text" required><input class="save-data submit1" value="Save" type="submit" onClick="location.reload()">
+    return `<div id="input-box"><input type="text" required><input class="save-data submit1" value="Save" type="submit" onclick="location.reload()">
             </div>`
 }
 function inputFieldBuilder(title){
@@ -77,13 +77,13 @@ function inputFieldBuilder(title){
 }
 
 function saveButtonBuilder(){
-    return `<input class="save-data submit1" value="Save" type="submit" onClick="location.reload()">`
+    return `<input class="save-data submit1" value="Save" type="submit" onclick="location.reload()">`
 }
-//TODO
+
 function columnBuilder(columnTitle, boardId) {
     return `<div class="board-column" data-board-id=${boardId}>
-            <div class="board-column-title" data-board-id=${boardId}>${columnTitle}
-            <button class="delete-column-button" data-board-id=${boardId} onclick="location.reload()">🗑️</button></div>
+            <div class="board-column-title" data-board-id=${boardId}>${columnTitle}</div>
+            <div class="delete-column-button" data-board-id=${boardId} onclick="location.reload()">🗑️</div>
             <div class="board-column-cards" data-board-id=${boardId}></div>
             </div>
             `

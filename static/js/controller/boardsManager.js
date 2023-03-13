@@ -12,6 +12,7 @@ export let boardsManager = {
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
             await columnsManager.loadColumns(board.id);
+            await cardsManager.loadCards(board.id);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);
@@ -141,7 +142,6 @@ function addColumn(clickEvent) {
         dataHandler.setColumnName(newColumnName, boardId);
         const columnBuilder = htmlFactory(htmlTemplates.column);
         const content = columnBuilder(newColumnName, boardId);
-            // domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
         domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();
     }

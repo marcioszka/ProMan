@@ -6,10 +6,18 @@ export let columnsManager = {
     loadColumns: async function (boardId) {
         const columns = await dataHandler.getStatuses(boardId);
         for (let column of columns) {
-            console.log(column)
             const columnBuilder = htmlFactory(htmlTemplates.column);
-            const content = columnBuilder(column.title, column.board_id);
+            const content = columnBuilder(column.title, boardId);
             domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
+            domManager.addEventListener(`.delete-column-button[data-board-id="${boardId}"]`,
+               'click',
+               deleteColumn);
         }
     },
 };
+
+function deleteColumn(clickEvent) {
+    const columnName = clickEvent.target.previousElementSibling.innerText;
+    const boardId = parseInt(clickEvent.target.dataset.boardId);
+    dataHandler.deleteColumn(columnName, boardId);
+}

@@ -76,6 +76,15 @@ def add_column():
     board_id = content["board_id"]
     return queries.add_column(column_title, board_id)
 
+@app.route("/api/statuses/delete_status", methods=['GET', 'DELETE'])
+@json_response
+def delete_column():
+    data = request.get_json(force=True)
+    content = data["body"]
+    queries.delete_status(content["title"], content["board_id"])
+    # queries.delete_cards_by_status(status_id)
+    return request.get_json()
+
 @app.route("/api/statuses/<int:status_id>", methods=['PUT'])
 @json_response
 def update_status(status_id):
@@ -117,8 +126,6 @@ def add_card(board_id):
     card_title = content["title"]
     status_id = content["status_id"]
     board_id = content["board_id"]
-    # user_id = session.get('id')
-    # result = queries.add_card(board_id, status_id, card_title, user_id)
     result = queries.add_card(board_id, status_id, card_title)
     return result["id"]
 
@@ -180,6 +187,7 @@ def delete_card(card_id: int):
 @json_response
 def get_columns(board_id):
     return queries.get_board_statuses(board_id)
+
 
 def main():
     app.run(debug=True)

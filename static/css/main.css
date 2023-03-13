@@ -19,6 +19,7 @@ body{
 
 .delete-board-button{
     background: transparent;
+    float: right;
 }
 
 #user-id{
@@ -33,14 +34,23 @@ body{
 }
 
 
-.board-title{
+.board-title, #change-board-name-box{
     font-weight: bolder;
     margin: 13px;
     display: inline-block;
     font-size: 140%;
     font-family: Garamond, serif;
     text-align: center;
+    background-color: transparent;
 }
+
+/*#change-board-name-box{*/
+/*    font-family: Garamond, serif;*/
+/*    font-size: 140%;*/
+/*    position: center;*/
+/*    text-align: center;*/
+/*    background-color: transparent;*/
+/*}*/
 
 .board-column-title{
     background: peachpuff;
@@ -325,3 +335,4 @@ strong{
     display: inline-block;
     font-family: Garamond, serif;
 }
+
