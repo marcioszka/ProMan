@@ -56,6 +56,7 @@ function addCard(clickEvent){
         const cardId = dataHandler.createNewCard(cardName, boardId, 1); // uzupełnić o userId
         const newCard = htmlFactory(htmlTemplates.card)(cardId, cardName);
         domManager.addChild(`.board-column-1[data-board-id="${boardId}"]`, newCard);
+        location.reload();
     }
 }
 
