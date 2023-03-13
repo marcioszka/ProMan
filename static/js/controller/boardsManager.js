@@ -10,13 +10,8 @@ export let boardsManager = {
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
-            console.log(board);
             domManager.addChild("#root", content);
             await columnsManager.loadColumns(board.id);
-            domManager.addEventListener(
-               `.toggle-board-button[data-board-id="${board.id}"]`,
-               "dblclick",
-               showHideButtonHandler);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);
@@ -30,12 +25,7 @@ export let boardsManager = {
                 'click',
                 addColumn);
             domManager.addEventListener(`.add-card-button[data-board-id="${board.id}"]`, 'click', addCard);
-            // let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
-            // for(let i=0; i<columnNames.length; i++){
-            //     const columnName = columnNames.item(i);
-                // console.log(columnName); //necessary? nope
-                //columnName.addEventListener('click', renameColumn);
-            // }
+
         }
     },
     createBoard: function (clickEvent) {
@@ -147,12 +137,21 @@ function addColumn(clickEvent) {
     addColumnButton.insertAdjacentElement('afterend', columnNameInput);
     columnNameInput.onblur = function(event){
         let newColumnName = columnNameInput.value;
-        dataHandler.setColumnName(newColumnName);
-        const columnBuilder = htmlFactory(htmlTemplates.column);
         const boardId = parseInt(clickEvent.target.dataset.boardId);
+        dataHandler.setColumnName(newColumnName, boardId);
+        const columnBuilder = htmlFactory(htmlTemplates.column);
         const content = columnBuilder(newColumnName, boardId);
-        // domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
+            // domManager.addChild(`.board-columns[data-board-id="${boardId}"]`, content);
         domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();
     }
+}
+
+function takenColumnName(columnName, boardId){
+    const columns = dataHandler.getStatuses(boardId);
+    for(let column of columns){
+        const hasColumn = column.title==columnName ? true : false;
+        if (hasColumn == true) { return true}
+    }
+    return false;
 }

@@ -31,9 +31,9 @@ export function htmlFactory(template) {
 function boardBuilder(board) {
     return `<div class="board-container">
                 <section class="board-header" data-board-id=${board.id}>
-                    <button class="delete-board-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
+                    
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
-                    <button class="toggle-board-button button2" data-board-id="${board.id}">Show Cards</button>
+                    <button class="delete-board-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                 </section>
                 <div class="board-columns" data-board-id=${board.id} style="display: none">
                     <div class="columns-panel">
@@ -73,7 +73,7 @@ function inputPanelBuilder(){
             </div>`
 }
 function inputFieldBuilder(title){
-    return `<input type="text" placeholder="${title}" required>`
+    return `<div class="input-box"><input type="text" placeholder="${title}" required></div>`
 }
 
 function saveButtonBuilder(){
