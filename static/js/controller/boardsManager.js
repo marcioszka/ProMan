@@ -2,6 +2,7 @@ import {dataHandler} from "../data/dataHandler.js";
 import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
 import {cardsManager} from "./cardsManager.js";
+import {columnsManager} from "./columnsManager.js";
 
 export let boardsManager = {
     loadBoards: async function () {
@@ -9,11 +10,13 @@ export let boardsManager = {
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
+            console.log(board);
             domManager.addChild("#root", content);
+            await columnsManager.loadColumns(board.id);
             domManager.addEventListener(
-                `.toggle-board-button[data-board-id="${board.id}"]`,
-                "dblclick",
-                showHideButtonHandler);
+               `.toggle-board-button[data-board-id="${board.id}"]`,
+               "dblclick",
+               showHideButtonHandler);
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);
@@ -27,12 +30,12 @@ export let boardsManager = {
                 'click',
                 addColumn);
             domManager.addEventListener(`.add-card-button[data-board-id="${board.id}"]`, 'click', addCard);
-            let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
-            for(let i=0; i<columnNames.length; i++){
-                const columnName = columnNames.item(i);
+            // let columnNames = document.querySelectorAll(`.board-column-title[data-board-id="${board.id}"]`);
+            // for(let i=0; i<columnNames.length; i++){
+            //     const columnName = columnNames.item(i);
                 // console.log(columnName); //necessary? nope
                 //columnName.addEventListener('click', renameColumn);
-            }
+            // }
         }
     },
     createBoard: function (clickEvent) {
