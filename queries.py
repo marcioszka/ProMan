@@ -20,17 +20,17 @@ def get_card_status(status_id):
 def get_board_statuses(board_id):
     return data_manager.execute_select(
         """
-        SELECT statuses.id, statuses.title 
+        SELECT statuses.id, statuses.title, statuses.board_id 
         FROM statuses
-        JOIN cards c on statuses.id = c.status_id
-        JOIN boards b on b.id = c.board_id
-        WHERE b.id = ${board_id}s
+        WHERE board_id=%(board_id)s
         ;
         """
         , {"board_id": board_id}
     )
 
-
+#         JOIN cards c on statuses.id = c.status_id
+#         JOIN boards b on b.id = c.board_id
+#         WHERE b.id = ${board_id}s
 def get_board(title):
     return data_manager.execute_select(
         """
