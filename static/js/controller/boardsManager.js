@@ -40,19 +40,6 @@ export let boardsManager = {
     },
 };
 
-function renameColumn(clickEvent) {
-    const oldName = clickEvent.target.innerText;
-    const newColumnNameField = document.createElement('input');
-    newColumnNameField.setAttribute('placeholder', oldName);
-    const boardId = parseInt(clickEvent.target.dataset.boardId);
-    clickEvent.target.style.display = "none";
-    clickEvent.target.insertAdjacentElement('afterend', newColumnNameField);
-    console.log('ok', oldName, newColumnNameField, clickEvent.target);
-    newColumnNameField.addEventListener('keypress', handleKeyPress);
-    newColumnNameField.addEventListener('blur', ()=> {return});
-    //newColumnNameField.remove();
-    //clickEvent.target.style.display = "block";
-    }
 
 function addCard(clickEvent){
     clickEvent.stopPropagation();
@@ -72,18 +59,6 @@ function addCard(clickEvent){
     }
 }
 
-function handleKeyPress(keyEvent) {
-    keyEvent.stopPropagation();
-    const newName = keyEvent.target.value;
-    if(keyEvent.key == 'Enter' && newName != "")
-    {
-        const columnId = 19;    //TODO
-        dataHandler.renameColumn(newName, columnId);
-    }
-    else if (keyEvent.key == 'Escape'){
-        return;
-    }
-}
 
 function renameBoard(clickEvent) {
     clickEvent.stopPropagation();
@@ -140,10 +115,8 @@ function addColumn(clickEvent) {
         let newColumnName = columnNameInput.value;
         const boardId = parseInt(clickEvent.target.dataset.boardId);
         dataHandler.setColumnName(newColumnName, boardId);
-        const columnBuilder = htmlFactory(htmlTemplates.column);
-        const content = columnBuilder(newColumnName, boardId);
-        domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
         document.getElementById('add-column-name-box').remove();
+        location.reload();
     }
 }
 
