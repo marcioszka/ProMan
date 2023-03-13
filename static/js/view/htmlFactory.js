@@ -80,11 +80,11 @@ function saveButtonBuilder(){
     return `<input class="save-data submit1" value="Save" type="submit" onclick="location.reload()">`
 }
 
-function columnBuilder(columnTitle, boardId) {
-    return `<div class="board-column" data-board-id=${boardId}>
-            <div class="board-column-title" data-board-id=${boardId}>${columnTitle}</div>
-            <div class="delete-column-button" data-board-id=${boardId} onclick="location.reload()">🗑️</div>
-            <div class="board-column-cards" data-board-id=${boardId}></div>
+function columnBuilder(column) {
+    return `<div class="board-column" data-board-id=${column.board_id} data-id="${column.id}">
+            <div class="board-column-title" data-id="${column.id}" data-board-id=${column.board_id}>${column.title}</div>
+            <div class="delete-column-button" data-board-id=${column.board_id} onclick="location.reload()">🗑️</div>
+            <div class="board-column-cards" data-board-id=${column.board_id}></div>
             </div>
             `
 }
