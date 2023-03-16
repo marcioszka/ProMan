@@ -121,11 +121,3 @@ function addColumn(clickEvent) {
     }
 }
 
-function takenColumnName(columnName, boardId){
-    const columns = dataHandler.getStatuses(boardId);
-    for(let column of columns){
-        const hasColumn = column.title==columnName ? true : false;
-        if (hasColumn == true) { return true}
-    }
-    return false;
-}

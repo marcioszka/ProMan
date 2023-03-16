@@ -63,8 +63,8 @@ function boardBuilder(board) {
 }
 
 function cardBuilder(card) {
-    return `<div class="card" contentEditable='true' data-status-id=${card.status_id} data-card-id="${card.id}">${card.title}
-<button class="delete-card-button" data-card-id=${card.id} onclick="location.reload()">🗑️</button>
+    return `<div class="card"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
+<button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button>
 </div>`;
 }
 

@@ -10,15 +10,45 @@ export let cardsManager = {
             const content = cardBuilder(card);
             domManager.addChild(`.board-column-cards[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(
-                `.delete-card-button[data-card-id="${card.id}"]`,
+                `.delete-card-button[data-id="${card.id}"]`,
                 "click",
-                deleteButtonHandler
-            );
+                deleteButtonHandler);
+            domManager.addEventListener(`.card-title[data-id="${card.id}"]`,
+                "click",
+                renameCard);
         }
     },
 };
 
 function deleteButtonHandler(clickEvent) {
-    const cardId = clickEvent.target.dataset.cardId;
+    const cardId = clickEvent.target.dataset.id;
     dataHandler.deleteCard(cardId);
+}
+
+function renameCard(clickEvent){
+    clickEvent.stopPropagation();
+    const oldName = clickEvent.target.innerText;
+    clickEvent.target.style.display = "none";
+    const newCardNameField = document.createElement('input');
+    newCardNameField.setAttribute('id', 'change-column-name-box');
+    newCardNameField.setAttribute('required', 'true');
+    newCardNameField.setAttribute('placeholder', oldName);
+    clickEvent.target.insertAdjacentElement('afterend', newCardNameField);
+    domManager.addEventListener('#change-column-name-box',
+        'keydown',
+        handleKeyPress);
+}
+
+function handleKeyPress(keyEvent){
+    keyEvent.stopPropagation();
+    const newCardName = keyEvent.target.value;
+    const cardId = parseInt(keyEvent.target.previousElementSibling.dataset.id);
+    if(keyEvent.key === 'Enter')
+    {
+        dataHandler.renameCard(newCardName, cardId);
+        location.reload();
+    }
+    else if (keyEvent.key === 'Escape'){
+        location.reload();
+    }
 }

@@ -15,7 +15,7 @@ export let columnsManager = {
             domManager.addEventListener(`.board-column-title[data-id="${column.id}"]`,
                 'click',
                 renameColumn);
-        }
+            }
     },
 };
 
@@ -34,17 +34,13 @@ function renameColumn(clickEvent) {
     newColumnNameField.setAttribute('required', 'true');
     newColumnNameField.setAttribute('placeholder', oldName);
     clickEvent.target.insertAdjacentElement('afterend', newColumnNameField);
-    //newColumnNameField.addEventListener('blur', ()=> {return});
-    //newColumnNameField.remove();
-    //clickEvent.target.style.display = "block";
     newColumnNameField.onblur = function (event) {
         let newColumnName = newColumnNameField.value;
         const columnId = parseInt(clickEvent.target.dataset.id);
-        console.log(columnId);
         dataHandler.renameColumn(columnId, newColumnName);
         document.getElementById('change-column-name-box').remove();
         location.reload();
-    }
+        }
     }
 
 function handleKeyPress(keyEvent) {
@@ -58,4 +54,13 @@ function handleKeyPress(keyEvent) {
     else if (keyEvent.key == 'Escape'){
         return;
     }
+}
+ async function columnNameValidation(columnName, boardId){
+    let columns = await dataHandler.getStatuses(boardId);
+    let columnNames = ["new", "in progress", "testing", "done"];
+    for(let column of columns){
+        columnNames.push(column.title);
+    }
+    columnName.toLowerCase();
+    return columnNames.includes(columnName)
 }

@@ -204,9 +204,16 @@ def rename_column():
     content = data["body"]
     title = content["title"]
     id = content["id"]
-    print(id, title)
     return queries.update_column_name(id, title)
 
+
+@app.route("/api/cards/rename_card/<int:card_id>", methods=['GET', 'PUT'])
+@json_response
+def rename_card(card_id):
+    data = request.get_json(force=True)
+    content = data["body"]
+    title = content["title"]
+    return queries.update_card_name(card_id, title)
 
 def main():
     app.run(debug=True)
