@@ -46,11 +46,10 @@ function addCard(clickEvent){
     const cardNameField = document.createElement('input');
     cardNameField.setAttribute('placeholder', 'New card');
     clickEvent.target.style.display = "none";
-    //const boardId = parseInt(clickEvent.target.dataset.boardId);
     clickEvent.target.insertAdjacentElement('afterend', cardNameField);
     cardNameField.onblur = function(event, ){
         const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
-        const cardName = cardNameField.value; //ok
+        const cardName = cardNameField.value;
         cardNameField.remove();
         clickEvent.target.style.display = "block";
         const cardId = dataHandler.createNewCard(cardName, boardId, 1); // uzupełnić o userId
