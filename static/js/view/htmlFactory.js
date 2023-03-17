@@ -40,6 +40,7 @@ function boardBuilder(board) {
                     <br>
                         <input class="add-column-button submit1" data-board-id=${board.id} type="submit" value="Add column">
                         <input class="add-card-button submit1" data-board-id=${board.id} type="submit" value="Add card">
+                        <input class="archived-cards-button submit1" data-board-id=${board.id} type="submit" value="Archived cards" style="display: none">
                     </div>
                 <div class="columns-in-boards" data-board-id=${board.id}>
                     <div class="board-column-1" data-board-id=${board.id}>
@@ -65,6 +66,7 @@ function boardBuilder(board) {
 function cardBuilder(card) {
     return `<div class="card"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
 <button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button>
+<button class="archive-card-button" data-id=${card.id} onclick="location.reload()">Archive</button>
 </div>`;
 }
 

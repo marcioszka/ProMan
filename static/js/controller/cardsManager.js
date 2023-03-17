@@ -16,6 +16,9 @@ export let cardsManager = {
             domManager.addEventListener(`.card-title[data-id="${card.id}"]`,
                 "click",
                 renameCard);
+            domManager.addEventListener(`.archive-card-button"[data-id="${card.id}"]`,
+                "click",
+                archiveCard);
         }
     },
 };
@@ -51,4 +54,9 @@ function handleKeyPress(keyEvent){
     else if (keyEvent.key === 'Escape'){
         location.reload();
     }
+}
+
+function archiveCard(clickEvent){
+    clickEvent.target.parentElement.style.display = 'none';
+
 }
