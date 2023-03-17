@@ -50,6 +50,20 @@ export let dataHandler = {
     renameCard: async function (cardTitle, cardId){
         return await apiPut(`/api/cards/rename_card/${cardId}`, {body: {"id": cardId, "title": cardTitle}})
     },
+    changeCardStatus: async function (cardId, cardStatus) {
+        let data = {'card_id': cardId, 'card_status': cardStatus}
+        return await apiPut('/api/change_card_status', data)
+    },
+
+    changeCardOrder: async function (cardId, cardOrder) {
+    let data = {'card_id': cardId, 'order_status': cardOrder}
+        return await apiPut('/api/change_card_order', data)
+    },
+
+    changeCardsOrder: async function (cardStatus, cardOrder, boardId, status) {
+    let data = {'card_status': cardStatus, 'order_status': cardOrder, 'board_status': boardId, 'status': status}
+        return await apiPut('/api/change_card_order', data)
+    },
 };
 
 async function apiGet(url) {
@@ -61,7 +75,7 @@ async function apiGet(url) {
     }
 }
 
-async function apiPost(url, payload) {
+export async function apiPost(url, payload) {
     let response = await fetch(url, {
         method: "POST",
         body: JSON.stringify(payload)

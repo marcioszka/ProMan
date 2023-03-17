@@ -2,6 +2,7 @@ import {dataHandler} from "../data/dataHandler.js";
 import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
 import {cardsManager} from "./cardsManager.js";
+import {makeDroppable} from "./dragAndDrop.js";
 
 export let boardsManager = {
     loadBoards: async function () {
@@ -10,6 +11,7 @@ export let boardsManager = {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
+            makeDroppable.droppableBoards();
             domManager.addEventListener(
                 `.toggle-board-button[data-board-id="${board.id}"]`,
                 "dblclick",
@@ -122,11 +124,11 @@ function showHideButtonHandler(clickEvent) {
 function toggleHideShowBoardColumns(clickEvent) {
     const hideShowToggler = clickEvent.target;
     const hideShow = hideShowToggler.nextElementSibling;
-    const isHidden = hideShow.style.display === 'none';
+    const isHidden = hideShow.style.display === "none";
     if (isHidden) {
-        hideShow.style.display = 'block'
+        hideShow.style.display = "block"
     } else {
-        hideShow.style.display = 'none'
+        hideShow.style.display = "none"
     };
 }
 

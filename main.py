@@ -161,6 +161,7 @@ def logout():
     session.clear()
     return redirect('/')
 
+
 @app.route("/api/cards/")
 @json_response
 def get_all_cards():
@@ -181,6 +182,29 @@ def get_card_status(board_id):
     content = data['body']
     board_id = content['board_id']
     return queries.get_board_statuses(board_id)
+
+
+@app.route("/api/change_card_order/<int:card_order>", methods=['PUT'])
+# @json_response
+def change_card_order(card_order):
+
+    data = request.get_json(force=True)
+    card_id = data['id']
+    order_status = data['order_status']
+    queries.change_card_order(card_id, order_status)
+    return request.get_json()
+    # return queries.change_card_order(data['id'], data['order_status'])
+
+
+@app.route("/api/change_card_status/<int:status_id>", methods=['PUT'])
+# @json_response
+def change_card_status(status_id):
+    data = request.get_json(force=True)
+    card_id = data['id']
+    card_status = data['card_status']
+    queries.change_card_status(card_id, card_status)
+    return request.get_json()
+    # return queries.change_card_status(data['id'], data['card_status'])
 
 
 def main():

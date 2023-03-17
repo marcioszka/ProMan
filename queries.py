@@ -220,9 +220,30 @@ def create_card(data, status_id):
 #         RETURNING id""", {'title': title, 'board_id': board_id, 'user_id': user_id, 'status_id': status_id}, fetchall=False
 #     )
 
+
 def add_card(board_id, status_id, title):
     return data_manager.execute_select(
         """
         INSERT INTO cards (board_id, status_id, title, card_order) VALUES (%(board_id)s, %(status_id)s, %(title)s, 1)
         RETURNING id""", {'title': title, 'board_id': board_id, 'status_id': status_id}, fetchall=False
     )
+
+
+def change_card_status(card_id, column_status):
+    data_manager.execute_update(
+        """
+        UPDATE cards
+        SET status_id = %(column_status)s
+        WHERE  id = %(card_id)s
+        """
+        , {'column_status': column_status, 'card_id': card_id})
+
+
+def change_card_order(card_id, order_status):
+    data_manager.execute_update(
+        """
+        UPDATE cards
+        SET card_order = %(order_status)s
+        WHERE  id = %(card_id)s
+        """
+        , {'order_status': order_status, 'card_id': card_id})
