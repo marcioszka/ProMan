@@ -44,6 +44,7 @@ export let boardsManager = {
 function addCard(clickEvent){
     clickEvent.stopPropagation();
     const cardNameField = document.createElement('input');
+    cardNameField.setAttribute('class', 'addNewElement');
     cardNameField.setAttribute('placeholder', 'New card');
     clickEvent.target.replaceWith(cardNameField);
     cardNameField.onblur = function(event){
@@ -85,12 +86,14 @@ function showHideButtonHandler(clickEvent) {
 }
 
 function toggleHideShowBoardColumns(clickEvent) {
-    const hideShowToggler = clickEvent.target;
-    const hideShow = hideShowToggler.nextElementSibling;
+    clickEvent.preventDefault();
+    const boardId = clickEvent.target.dataset.boardId;
+    const hideShow = document.querySelector(`.board-columns-${boardId}`);
     const isHidden = hideShow.style.display === 'none';
     if (isHidden) {
         hideShow.style.display = 'block'
-    } else {
+    }
+    else {
         hideShow.style.display = 'none'
     };
 }
@@ -105,6 +108,7 @@ function addColumn(clickEvent) {
     clickEvent.stopPropagation();
     const columnNameInput = document.createElement('input');
     columnNameInput.setAttribute('id', 'add-column-name-box');
+    columnNameInput.setAttribute('class', 'addNewElement');
     columnNameInput.setAttribute('required', 'true');
     clickEvent.target.replaceWith(columnNameInput);
     columnNameInput.onblur = function(event){

@@ -30,13 +30,13 @@ export function htmlFactory(template) {
 
 function boardBuilder(board) {
     return `<div class="board-container">
-                <section class="board-header" data-board-id=${board.id}>
+                <div class="board-header" data-board-id=${board.id}>
                     <span class="board-title" data-board-id=${board.id}>${board.title}</span>
                     <input class="add-column-button submit1" data-board-id=${board.id} type="submit" value="Add column">
                     <input class="add-card-button submit1" data-board-id=${board.id} type="submit" value="Add card">
                     <button class="delete-board-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
-                </section>
-                <div class="board-columns" data-board-id=${board.id} style="display: none">
+                </div>
+                <div class="board-columns-${board.id}" data-board-id=${board.id} style="display: none">
                     
                 <div class="columns-in-boards" data-board-id=${board.id}>
                     <div class="board-column-1" data-board-id=${board.id}>
@@ -66,7 +66,7 @@ function cardBuilder(card) {
 }
 
 function inputPanelBuilder(){
-    return `<div id="input-box"><input type="text" required><input class="save-data submit1" value="Save" type="submit" onclick="location.reload()">
+    return `<div id="input-box"><input type="text" required><input class="save-data submit2" value="Save" type="submit" onclick="location.reload()">
             </div>`
 }
 function inputFieldBuilder(title){

@@ -19,7 +19,7 @@ body{
 
 .delete-board-button{
     background: transparent;
-    float: right;
+    float: left;
 }
 
 #user-id{
@@ -59,6 +59,7 @@ body{
     font-weight: bold;
     font-size: large;
     font-family: Garamond, serif;
+    position: top;
 }
 
 h1{
@@ -132,7 +133,7 @@ section.board{
 
 .board-columns, .columns-in-boards{
     /*display: inline-flex;*/
-    align-items: center;
+    align-items: top;
     display: flex;
     flex-wrap: nowrap;
 }
@@ -284,6 +285,20 @@ input[type=button] {
     border: 2px solid rebeccapurple;
     background-color: rebeccapurple;
     font-size: 15px;
+    float: right;;
+    height: 80%;
+    margin-right: 2px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit2{
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
     height: 80%;
     padding: 8px 10px;
     border-radius: 8px;
@@ -293,6 +308,13 @@ input[type=button] {
 }
 
 .submit1:hover {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    height: 80%;
+    border: 2px solid rebeccapurple;
+}
+
+.submit2:hover {
     background-color: peachpuff;
     color: rebeccapurple;
     height: 80%;
@@ -328,7 +350,6 @@ strong{
     font-family: Garamond, serif;
     font-size: 130%;
     font-weight: bold;
-    ;
 }
 
 .form-logo{
@@ -336,3 +357,6 @@ strong{
     font-family: Garamond, serif;
 }
 
+.addNewElement{
+    float: right;
+}
