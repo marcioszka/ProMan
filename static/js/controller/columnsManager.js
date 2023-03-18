@@ -3,13 +3,14 @@ import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
 import { cardsManager } from "./cardsManager.js";
 
+const columnKeys= ["new", "in progress", "testing", "done"]
+
 export let columnsManager = {
     loadColumns: async function (boardId) {
         const columns = await dataHandler.getStatuses(boardId);
         for (let column of columns) {
             const columnBuilder = htmlFactory(htmlTemplates.column);
             const content = columnBuilder(column);
-            await cardsManager.loadCards(boardId, column.id);
             domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(`.delete-column-button[data-board-id="${boardId}"]`,
                'click',
@@ -18,6 +19,10 @@ export let columnsManager = {
                 'click',
                 renameColumn);
             }
+        for(let i=1; i<=4; i++){columns.push({"board_id": boardId, "id": i, "title": columnKeys[i-1]})};
+        for(let eachColumn of columns){
+            await cardsManager.loadCards(boardId, eachColumn.id);
+        }
     },
 };
 

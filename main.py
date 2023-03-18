@@ -104,7 +104,8 @@ def get_cards_for_board(board_id, status_id):
     # data = request.get_json(force=True)
     # content = data["body"]
     # board_id = content["board_id"]
-    return queries.get_cards_for_board(board_id, status_id)
+    cards = queries.get_cards_for_board(board_id, status_id)
+    return cards
 
 
 # @app.route("/api/boards/<int:board_id>/cards/")
@@ -234,8 +235,8 @@ def change_card_order(card_order):
 def change_card_status(card_id):
     data = request.get_json(force=True)
     content = data['body']
-    card_status = content['card_status']
-    queries.change_card_status(card_id, card_status)
+    status_id = content['status_id']
+    queries.change_card_status(card_id, status_id)
     return request.get_json()
 
 

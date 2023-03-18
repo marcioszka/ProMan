@@ -267,14 +267,14 @@ def update_card_name(id, title):
     )
 
 
-def change_card_status(card_id, column_status):
+def change_card_status(id, status_id):
     data_manager.execute_update(
         """
         UPDATE cards
-        SET status_id = %(column_status)s
-        WHERE  id = %(card_id)s
+        SET status_id = %(status_id)s
+        WHERE  id = %(id)s
         """
-        , {'column_status': column_status, 'card_id': card_id})
+        , {'status_id': status_id, 'id': id})
 
 
 def change_card_order(card_id, order_status):

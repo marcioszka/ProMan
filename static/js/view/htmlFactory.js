@@ -40,19 +40,19 @@ function boardBuilder(board) {
                 <div class="columns-in-boards" data-board-id=${board.id}>
                     <div class="board-column" data-board-id=${board.id} data-id="1">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>New</div></div>
-                        <div class="board-column-cards" data-board-id=${board.id}></div>
+                        <div class="board-column-cards" data-id="1" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id} data-id="2">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>In progress</div></div>
-                        <div class="board-column-cards" data-board-id=${board.id}></div>
+                        <div class="board-column-cards" data-id="2" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id} data-id="3">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>Testing</div></div>
-                        <div class="board-column-cards" data-board-id=${board.id}></div>
+                        <div class="board-column-cards" data-id="3" data-board-id=${board.id}></div>
                     </div>
                     <div class="board-column" data-board-id=${board.id} data-id="4">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>Done</div></div>
-                        <div class="board-column-cards" data-board-id=${board.id}></div>
+                        <div class="board-column-cards" data-id="4" data-board-id=${board.id}></div>
                     </div>                    
                 </div>
                 </div>
@@ -60,7 +60,7 @@ function boardBuilder(board) {
 }
 
 function cardBuilder(card) {
-    return `<div class="card" draggable="true" data-id="${card.id}"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
+    return `<div class="card" draggable="true" data-id="${card.id}" data-status-id=${card.status_id}><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
             <button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button></div>`
 }
 
@@ -85,7 +85,7 @@ function columnBuilder(column) {
             <div class="board-column-title" data-id="${column.id}" data-board-id=${column.board_id}>${column.title}</div>
             <button class="delete-column-button" data-board-id=${column.board_id} onclick="location.reload()">🗑️</button>
             </div>
-            <div class="board-column-cards" data-board-id=${column.board_id}></div>
+            <div class="board-column-cards" data-id="${column.id}" data-board-id=${column.board_id}></div>
             </div>
             `
     }

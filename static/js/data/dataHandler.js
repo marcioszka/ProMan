@@ -54,7 +54,7 @@ export let dataHandler = {
         return await apiPut(`/api/cards/rename_card/${cardId}`, {body: {"id": cardId, "title": cardTitle}})
     },
     changeCardStatus: async function (cardId, cardStatus) {
-        let data = {'card_status': cardStatus}
+        let data = {'status_id': cardStatus}
         return await apiPut(`/api/change_card_status/${cardId}`, {body: data})
     },
 

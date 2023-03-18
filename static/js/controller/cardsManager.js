@@ -6,11 +6,10 @@ import {domManager} from "../view/domManager.js";
 export let cardsManager = {
     loadCards: async function (boardId, columnId) {
         const cards = await dataHandler.getCardsByBoardId(boardId, columnId);
-        console.log(cards);
         for (let card of cards) {
             const cardBuilder = htmlFactory(htmlTemplates.card);
             const content = cardBuilder(card);
-            domManager.addChild(`.board-column-cards[data-board-id="${boardId}"]`, content);
+            domManager.addChild(`.board-column-cards[data-id="${columnId}"]`, content);
             makeDroppable.draggableCard();
             domManager.addEventListener(
                 `.delete-card-button[data-id="${card.id}"]`,

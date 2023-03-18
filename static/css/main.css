@@ -169,9 +169,10 @@ section.board{
     border-radius: var(--border-radius);
     margin: 4px 0;
     padding: 4px;
+    height: 40px;
 }
 
-div.board-column-1:nth-of-type(1) .card{
+div.board-column:nth-of-type(1) .card{
     background: var(--status-1);
     text-align: center;
 }

@@ -44,12 +44,12 @@ export const makeDroppable = {
     dragDrop: function(e){
         let cards = document.getElementsByClassName("card");
         e.preventDefault();
-        let newCardStatus = e.currentTarget.dataset.id;
+        let newCardStatus = e.target.dataset.id;
         console.log(newCardStatus);
         let cardId = dragged.dataset.id;
         console.log(cardId);
         dataHandler.changeCardStatus(cardId, newCardStatus);
-        // location.reload();
+        location.reload();
         // if (!e.target.draggable) { //ha üres oszlop
         //     e.currentTarget.appendChild(dragged);
         //     dataHandler.changeCardOrder(cardId, "1");
