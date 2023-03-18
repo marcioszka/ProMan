@@ -45,16 +45,12 @@ function addCard(clickEvent){
     clickEvent.stopPropagation();
     const cardNameField = document.createElement('input');
     cardNameField.setAttribute('placeholder', 'New card');
-    clickEvent.target.style.display = "none";
-    clickEvent.target.insertAdjacentElement('afterend', cardNameField);
-    cardNameField.onblur = function(event, ){
+    clickEvent.target.replaceWith(cardNameField);
+    cardNameField.onblur = function(event){
         const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
         const cardName = cardNameField.value;
+        dataHandler.createNewCard(cardName, boardId, 1);
         cardNameField.remove();
-        clickEvent.target.style.display = "block";
-        const cardId = dataHandler.createNewCard(cardName, boardId, 1); // uzupełnić o userId
-        const newCard = htmlFactory(htmlTemplates.card)(cardId, cardName);
-        domManager.addChild(`.board-column-1[data-board-id="${boardId}"]`, newCard);
         location.reload();
     }
 }
@@ -110,9 +106,7 @@ function addColumn(clickEvent) {
     const columnNameInput = document.createElement('input');
     columnNameInput.setAttribute('id', 'add-column-name-box');
     columnNameInput.setAttribute('required', 'true');
-    const addColumnButton = clickEvent.target;
-    clickEvent.target.style.display = "none";
-    addColumnButton.insertAdjacentElement('afterend', columnNameInput);
+    clickEvent.target.replaceWith(columnNameInput);
     columnNameInput.onblur = function(event){
         let newColumnName = columnNameInput.value;
         const boardId = parseInt(clickEvent.target.dataset.boardId);
