@@ -106,10 +106,12 @@ function addBoard(clickEvent) {
 }
 
 function addColumn(clickEvent) {
+    clickEvent.stopPropagation();
     const columnNameInput = document.createElement('input');
     columnNameInput.setAttribute('id', 'add-column-name-box');
     columnNameInput.setAttribute('required', 'true');
     const addColumnButton = clickEvent.target;
+    clickEvent.target.style.display = "none";
     addColumnButton.insertAdjacentElement('afterend', columnNameInput);
     columnNameInput.onblur = function(event){
         let newColumnName = columnNameInput.value;
