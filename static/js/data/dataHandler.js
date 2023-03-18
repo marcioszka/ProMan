@@ -15,7 +15,7 @@ export let dataHandler = {
         return apiGet(`/api/get-statuses/${statusId}`)
     },
     getCardsByBoardId: async function (boardId) {
-        return await apiGet(`/api/boards/${boardId}/cards/`);
+        return await apiGet(`/api/boards/${boardId}/cards`);
     },
     getCard: async function (cardId) {
         // the card is retrieved and then the callback function is called with the card
@@ -51,18 +51,18 @@ export let dataHandler = {
         return await apiPut(`/api/cards/rename_card/${cardId}`, {body: {"id": cardId, "title": cardTitle}})
     },
     changeCardStatus: async function (cardId, cardStatus) {
-        let data = {'card_id': cardId, 'card_status': cardStatus}
-        return await apiPut('/api/change_card_status', data)
+        let data = {'card_status': cardStatus}
+        return await apiPut(`/api/change_card_status/${cardId}`, {body: data})
     },
 
     changeCardOrder: async function (cardId, cardOrder) {
-    let data = {'card_id': cardId, 'order_status': cardOrder}
-        return await apiPut('/api/change_card_order', data)
+        let data = {'card_id': cardId, 'order_status': cardOrder}
+        return await apiPut('/api/change_card_order', {body: data})
     },
 
     changeCardsOrder: async function (cardStatus, cardOrder, boardId, status) {
-    let data = {'card_status': cardStatus, 'order_status': cardOrder, 'board_status': boardId, 'status': status}
-        return await apiPut('/api/change_card_order', data)
+        let data = {'card_status': cardStatus, 'order_status': cardOrder, 'board_status': boardId, 'status': status}
+        return await apiPut('/api/change_card_order', {body: data})
     },
 };
 
