@@ -52,7 +52,7 @@ body{
 /*    background-color: transparent;*/
 /*}*/
 
-.board-column-title{
+.board-column-header{
     background: peachpuff;
     border-radius: 8px;
     text-align: center;
