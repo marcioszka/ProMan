@@ -9,7 +9,7 @@ export let cardsManager = {
         for (let card of cards) {
             const cardBuilder = htmlFactory(htmlTemplates.card);
             const content = cardBuilder(card);
-            domManager.addChild(`.board-column-cards[data-id="${columnId}"]`, content);
+            domManager.addChild(`.board-column-cards[data-id="${columnId}"][data-board-id="${boardId}"]`, content);
             makeDroppable.draggableCard();
             domManager.addEventListener(
                 `.delete-card-button[data-id="${card.id}"]`,

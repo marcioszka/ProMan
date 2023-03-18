@@ -51,7 +51,8 @@ function addCard(clickEvent){
     cardNameField.setAttribute('placeholder', 'New card');
     clickEvent.target.replaceWith(cardNameField);
     cardNameField.onblur = function(event){
-        const boardId = parseInt(event.target.previousElementSibling.dataset.boardId);
+        const boardId = parseInt(event.target.parentElement.dataset.boardId);
+        console.log(boardId);
         const cardName = cardNameField.value;
         dataHandler.createNewCard(cardName, boardId, 1);
         cardNameField.remove();
