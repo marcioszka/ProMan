@@ -3,6 +3,8 @@ import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
 import {cardsManager} from "./cardsManager.js";
 import {columnsManager} from "./columnsManager.js";
+import {makeDroppable} from "./dragAndDrop.js";
+
 
 export let boardsManager = {
     loadBoards: async function () {
@@ -12,7 +14,8 @@ export let boardsManager = {
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
             await columnsManager.loadColumns(board.id);
-            await cardsManager.loadCards(board.id);
+            await cardsManager.loadCards(board.id); //podpiac pod columnsManager
+            makeDroppable.droppableBoards();
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',
                 renameBoard);

@@ -2,3 +2,6 @@
 .vscode
 __pycache__
 venv
+/node_modules
+package.json
+package-lock.json

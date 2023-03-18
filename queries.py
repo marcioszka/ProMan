@@ -250,6 +250,7 @@ def create_card(data, status_id):
     )
 
 
+
 def add_card(board_id, status_id, title):
     return data_manager.execute_select(
         """
@@ -266,3 +267,24 @@ def update_card_name(id, title):
                 """,
         {'id': id, 'title': title}
     )
+
+
+def change_card_status(card_id, column_status):
+    data_manager.execute_update(
+        """
+        UPDATE cards
+        SET status_id = %(column_status)s
+        WHERE  id = %(card_id)s
+        """
+        , {'column_status': column_status, 'card_id': card_id})
+
+
+def change_card_order(card_id, order_status):
+    data_manager.execute_update(
+        """
+        UPDATE cards
+        SET card_order = %(order_status)s
+        WHERE  id = %(card_id)s
+        """
+        , {'order_status': order_status, 'card_id': card_id})
+

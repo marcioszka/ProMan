@@ -94,7 +94,7 @@ def update_status(status_id):
     return queries.get_status_id(column_title)
 
 
-@app.route("/api/boards/<int:board_id>/cards/")
+@app.route("/api/boards/<int:board_id>/cards")
 @json_response
 def get_cards_for_board(board_id: int):
     """
@@ -178,6 +178,7 @@ def logout():
     session.clear()
     return redirect('/')
 
+
 @app.route("/api/cards/")
 @json_response
 def get_all_cards():
@@ -214,6 +215,29 @@ def rename_card(card_id):
     content = data["body"]
     title = content["title"]
     return queries.update_card_name(card_id, title)
+
+
+@app.route("/api/change_card_order/<int:card_order>", methods=['PUT'])
+# @json_response
+def change_card_order(card_order):
+
+    data = request.get_json(force=True)
+    card_id = data['id']
+    order_status = data['order_status']
+    queries.change_card_order(card_id, order_status)
+    return request.get_json()
+    # return queries.change_card_order(data['id'], data['order_status'])
+
+
+@app.route("/api/change_card_status/<int:card_id>", methods=['PUT'])
+@json_response
+def change_card_status(card_id):
+    data = request.get_json(force=True)
+    content = data['body']
+    card_status = content['card_status']
+    queries.change_card_status(card_id, card_status)
+    return request.get_json()
+
 
 def main():
     app.run(debug=True)

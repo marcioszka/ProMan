@@ -37,38 +37,40 @@ function boardBuilder(board) {
                     <button class="delete-board-button" data-board-id=${board.id} onclick="location.reload()">🗑️</button>
                 </div>
                 <div class="board-columns-${board.id}" data-board-id=${board.id} style="display: none">
-                    
                 <div class="columns-in-boards" data-board-id=${board.id}>
-                    <div class="board-column-1" data-board-id=${board.id}>
+                    <div class="board-column" data-board-id=${board.id} data-id="1">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>New</div></div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
-                    <div class="board-column" data-board-id=${board.id}>
+                    <div class="board-column" data-board-id=${board.id} data-id="2">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>In progress</div></div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
-                    <div class="board-column" data-board-id=${board.id}>
+                    <div class="board-column" data-board-id=${board.id} data-id="3">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>Testing</div></div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
                     </div>
-                    <div class="board-column" data-board-id=${board.id}>
+                    <div class="board-column" data-board-id=${board.id} data-id="4">
                         <div class="board-column-header"><div class="board-column-title" data-board-id=${board.id}>Done</div></div>
                         <div class="board-column-cards" data-board-id=${board.id}></div>
-                    </div>
-                    </div>
-                </div>`;
+                    </div>                    
+                </div>
+                </div>
+            </div>`;
 }
 
 function cardBuilder(card) {
-    return `<div class="card"><button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
-
-</div>`;
+    return `<div class="card" draggable="true"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
+            <button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button></div>`
 }
+
+
 
 function inputPanelBuilder(){
     return `<div id="input-box"><input type="text" required><input class="save-data submit2" value="Save" type="submit" onclick="location.reload()">
             </div>`
 }
+
 function inputFieldBuilder(title){
     return `<div class="input-box"><input type="text" placeholder="${title}" required></div>`
 }
@@ -86,4 +88,5 @@ function columnBuilder(column) {
             <div class="board-column-cards" data-board-id=${column.board_id}></div>
             </div>
             `
-}
+    }
+
