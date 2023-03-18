@@ -14,7 +14,7 @@ export let boardsManager = {
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
             await columnsManager.loadColumns(board.id);
-            await cardsManager.loadCards(board.id); //podpiac pod columnsManager
+            // await cardsManager.loadCards(board.id); //podpiac pod columnsManager
             makeDroppable.droppableBoards();
             domManager.addEventListener(`.board-title[data-board-id="${board.id}"]`,
                 'click',

@@ -82,17 +82,15 @@ def add_private_board(user_id, title):
     )
 
 
-def get_cards_for_board(board_id):
-    # remove this code once you implement the database
-    # return [{"title": "title1", "id": 1}, {"title": "board2", "id": 2}]
+def get_cards_for_board(board_id, status_id):
 
     matching_cards = data_manager.execute_select(
         """
         SELECT * FROM cards
-        WHERE cards.board_id = %(board_id)s
+        WHERE cards.board_id = %(board_id)s AND cards.status_id=%(status_id)s
         ;
         """
-        , {"board_id": board_id})
+        , {"board_id": board_id, "status_id": status_id})
 
     return matching_cards
 

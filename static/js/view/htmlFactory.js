@@ -60,7 +60,7 @@ function boardBuilder(board) {
 }
 
 function cardBuilder(card) {
-    return `<div class="card" draggable="true"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
+    return `<div class="card" draggable="true" data-id="${card.id}"><div class="card-title" data-id="${card.id}" contentEditable='true' data-status-id=${card.status_id}>${card.title}</div>
             <button class="delete-card-button" data-id=${card.id} onclick="location.reload()">🗑️</button></div>`
 }
 

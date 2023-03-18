@@ -1,6 +1,7 @@
 import {dataHandler} from "../data/dataHandler.js";
 import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
+import { cardsManager } from "./cardsManager.js";
 
 export let columnsManager = {
     loadColumns: async function (boardId) {
@@ -8,6 +9,7 @@ export let columnsManager = {
         for (let column of columns) {
             const columnBuilder = htmlFactory(htmlTemplates.column);
             const content = columnBuilder(column);
+            await cardsManager.loadCards(boardId, column.id);
             domManager.addChild(`.columns-in-boards[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(`.delete-column-button[data-board-id="${boardId}"]`,
                'click',

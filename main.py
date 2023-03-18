@@ -94,9 +94,9 @@ def update_status(status_id):
     return queries.get_status_id(column_title)
 
 
-@app.route("/api/boards/<int:board_id>/cards")
+@app.route("/api/boards/<int:board_id>/<int:status_id>/cards")
 @json_response
-def get_cards_for_board(board_id: int):
+def get_cards_for_board(board_id, status_id):
     """
     All cards that belongs to a board
     :param board_id: id of the parent board
@@ -104,7 +104,7 @@ def get_cards_for_board(board_id: int):
     # data = request.get_json(force=True)
     # content = data["body"]
     # board_id = content["board_id"]
-    return queries.get_cards_for_board(board_id)
+    return queries.get_cards_for_board(board_id, status_id)
 
 
 # @app.route("/api/boards/<int:board_id>/cards/")
