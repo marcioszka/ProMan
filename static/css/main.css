@@ -4,6 +4,9 @@
     --status-2: #594300;
     --status-3: #495900;
     --status-4: #085900;
+    --status-5: #003759;
+    --status-6: #380059;
+    --status-7: #005952;
 }
 
 body{
@@ -189,6 +192,21 @@ div.board-column:nth-of-type(3) .card{
 
 div.board-column:nth-of-type(4) .card{
     background: var(--status-4);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(5) .card{
+    background: var(--status-5);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(6) .card{
+    background: var(--status-6);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(7) .card{
+    background: var(--status-7);
     text-align: center;
 }
 
