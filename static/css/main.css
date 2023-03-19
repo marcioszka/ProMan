@@ -1,0 +1,363 @@
+:root{
+    --border-radius: 3px;
+    --status-1: #590000;
+    --status-2: #594300;
+    --status-3: #495900;
+    --status-4: #085900;
+}
+
+body{
+    min-width: 620px;
+    background: #fff url(https://www.freecodecamp.org/news/content/images/2021/06/w-qjCHPZbeXCQ-unsplash.jpg);
+    font-family: serif Garamond;
+}
+
+#refresh-button{
+    position: fixed;
+    right: 1%;
+}
+
+.delete-board-button{
+    background: transparent;
+    float: left;
+}
+
+#user-id{
+    position: relative;
+    right: 1%;
+}
+
+.user-panel{
+    margin-bottom: 2%;
+    font-family: Garamond, serif;
+    font-size: 20px;
+}
+
+
+.board-title, #change-board-name-box{
+    font-weight: bolder;
+    margin: 13px;
+    display: inline-block;
+    font-size: 140%;
+    font-family: Garamond, serif;
+    text-align: center;
+    background-color: transparent;
+}
+
+/*#change-board-name-box{*/
+/*    font-family: Garamond, serif;*/
+/*    font-size: 140%;*/
+/*    position: center;*/
+/*    text-align: center;*/
+/*    background-color: transparent;*/
+/*}*/
+
+.board-column-header{
+    background: peachpuff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    font-family: Garamond, serif;
+    position: top;
+}
+
+h1{
+    text-align: center;
+    font-size: 4em;
+    letter-spacing: 5px;
+    transform: scale(1.2, 1);
+    font-family: Garamond, serif;
+}
+
+button{
+    background: #222;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 4px 10px;
+}
+
+.board-container{
+    max-width: 960px;
+    margin: 2% auto;
+}
+
+section.board{
+    margin: 20px;
+    border: aliceblue;
+    background: #ffffff90;
+    border-radius: 3px;
+}
+
+.board-header{
+    /*height: 50px;*/
+    background: peachpuff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+#change-board-name-box{
+    display: block;
+}
+
+.board-add, .toggle-board-button {
+    display: inline-block;
+}
+/*.board-add - add card button*/
+
+.delete-column-button, .rename-column-button{
+    width: 2px;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+}
+
+.delete-card-button{
+    width: 2px;
+    background: transparent;
+    float: right;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+
+.toggle-board-button {
+    float: right;
+    margin: 13px;
+}
+
+.board-columns, .columns-in-boards{
+    /*display: inline-flex;*/
+    align-items: top;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.board-column, .board-column-1{
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    flex: 1;
+    max-width: 25%;
+    align-items: center;
+    /*display: flex;*/
+    flex-wrap: nowrap;
+}
+
+.board-column-content{
+    min-height: 49px;
+}/*pojemnik z kartami*/
+
+.board-column-content:empty{
+    /*This only works if the tag is really empty and there is not even whitespace inside*/
+    border: 4px solid #cdcdcd;
+    margin-top: 4px;
+    border-radius: 10px;
+    background: #eee;
+}
+
+
+.card{
+    position: relative;
+    background: #222;
+    color: #fff;
+    border-radius: var(--border-radius);
+    margin: 4px 0;
+    padding: 4px;
+    height: 40px;
+}
+
+div.board-column:nth-of-type(1) .card{
+    background: var(--status-1);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(2) .card{
+    background: var(--status-2);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(3) .card{
+    background: var(--status-3);
+    text-align: center;
+}
+
+div.board-column:nth-of-type(4) .card{
+    background: var(--status-4);
+    text-align: center;
+}
+
+.card-remove{
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.card-title{
+    padding-right: 16px;
+}
+
+a:link, a:visited {
+    background-color: rebeccapurple;
+    color: peachpuff;
+    font-size: 15px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid rebeccapurple;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+a:hover {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    font-size: 80%;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid rebeccapurple;
+}
+
+a:active {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    font-size: 80%;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid rebeccapurple;
+}
+
+.button1{
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1:hover {
+  background-color: peachpuff;
+  color: rebeccapurple;
+  border: 2px solid rebeccapurple;
+}
+
+.button2{
+    margin: 5px;
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+  background-color: peachpuff;
+  color: rebeccapurple;
+  border: 2px solid rebeccapurple;
+}
+
+input[type=button] {
+    font-family: Garamond, serif;
+
+}
+
+.submit1{
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    float: right;;
+    height: 80%;
+    margin-right: 2px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit2{
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
+    font-size: 15px;
+    height: 80%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: peachpuff;
+    font-family: Garamond, serif;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit1:hover {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    height: 80%;
+    border: 2px solid rebeccapurple;
+}
+
+.submit2:hover {
+    background-color: peachpuff;
+    color: rebeccapurple;
+    height: 80%;
+    border: 2px solid rebeccapurple;
+}
+
+input[type=submit] {
+    font-family: Garamond, serif;
+
+}
+
+strong{
+    font-size: 22px;
+}
+
+.form-block{
+    /*display: inline-block;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: dashed 2px rebeccapurple;
+    border-radius: 1px;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    width: fit-content;
+    font-family: Garamond, serif;
+}
+
+.form-header{
+    margin: 0 0 10px 0;
+    font-family: Garamond, serif;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+.form-logo{
+    display: inline-block;
+    font-family: Garamond, serif;
+}
+
+.addNewElement{
+    float: right;
+}
