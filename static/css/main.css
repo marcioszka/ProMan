@@ -379,3 +379,10 @@ strong{
 .addNewElement{
     float: right;
 }
+
+.error{
+    text-align: left;
+    letter-spacing: 5px;
+    font-family: Garamond, serif;
+    font-weight: bolder;
+}

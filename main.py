@@ -157,21 +157,24 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     is_logged = False
-    if request.method == 'POST':
-        user_login = request.form.get("login")
-        user_password = request.form.get("user_password")
-        hashed_password = queries.get_user_password(user_login)
-        is_logged = validate_user(user_password, hashed_password)
-        if is_logged:
-            session['user'] = user_login
-            session['logged'] = True
-            session['id'] = queries.get_user_id(user_login)
-            return redirect('/')
-        else:
-            return render_template('error.html')
-    elif request.method == 'GET':
-        session.clear()
-        return render_template('login_form.html')
+    try:
+        if request.method == 'POST':
+            user_login = request.form.get("login")
+            user_password = request.form.get("user_password")
+            hashed_password = queries.get_user_password(user_login)
+            is_logged = validate_user(user_password, hashed_password)
+            if is_logged:
+                session['user'] = user_login
+                session['logged'] = True
+                session['id'] = queries.get_user_id(user_login)
+                return redirect('/')
+            else:
+                return render_template('error.html')
+        elif request.method == 'GET':
+            session.clear()
+            return render_template('login_form.html')
+    except:
+        return redirect('/login')
 
 
 @app.route("/logout")
