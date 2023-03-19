@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProMan</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('index') }}" class="link">Return to main page</a><br>
+    <div class="form-block">
+    <form class="form" action="{{ url_for('login') }}" method="post">
+        <div class="form-header">Sign in</div>
+        <label for="login" class="form__label">Username:</label>
+        <input type="text" id="login" name="login" required>
+        <br><br>
+        <label for="user_password" class="form__label">Password:</label>
+        <input type="password" id="user_password" name="user_password" required>
+        <br><br>
+        <input type="submit" class="form__submit submit1" value="Sign in" onclick="">
+    </form>
+    </div>
+</body>
+</html>
