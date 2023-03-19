@@ -31,9 +31,13 @@ export let dataHandler = {
     deleteBoard: async function (boardId) {
         return await apiDelete(`/api/boards/${boardId}`, {boardId:boardId});
     },
+    capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+    },
     setColumnName: async function (columnTitle, boardId){
         const title = columnTitle.toLowerCase();
-        return await apiPost(`/api/statuses`, {body:{"title": title, "board_id": boardId}})
+        const titleUpperFirst = this.capitalizeFirstLetter(columnTitle)
+        return await apiPost(`/api/statuses`, {body:{"title": titleUpperFirst, "board_id": boardId}})
     },
     renameBoard: async function (boardTitle, boardId){
         return await apiPut(`/api/boards/new_name`, {body: {"id": boardId, "title": boardTitle}})
